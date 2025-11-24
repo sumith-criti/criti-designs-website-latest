@@ -1,27 +1,37 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --font-montserrat: 'Montserrat', sans-serif;
   --font-lato: 'Lato', sans-serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  /* Colors */
+  --color-primary: #8AA46A;
+  --color-secondary: #2D2D2D;
+  --color-background: #F8F8F6;
+  --color-charcoal: #2D2D2D;
+  --color-muted-gold: #8AA46A;
+  --color-gold-accent: #7A9260;
+  
+  /* Fonts */
+  --font-sans: var(--font-lato), system-ui, sans-serif;
+  --font-display: var(--font-montserrat), sans-serif;
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-body: var(--font-lato), system-ui, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  font-family: var(--font-lato);
-  color: #2D2D2D;
-  background-color: #F8F8F6;
-  overflow-x: hidden;
+  body {
+    font-family: var(--font-lato);
+    color: #2D2D2D;
+    background-color: #F8F8F6;
+    overflow-x: hidden;
+  }
 }
 
 /* Custom scrollbar */
