@@ -21,9 +21,9 @@ export async function GET(
       include: {
         client: true,
         items: {
-          include: {
-            item: true
-          }
+          // include: {
+          //   item: true
+          // }
         },
         payments: true,
         template: true
@@ -90,14 +90,15 @@ export async function GET(
         ifsc: settings.bankIfsc || undefined,
         branch: settings.bankBranch || undefined
       },
-      items: invoice.items.map(item => ({
-        name: item.item.name,
-        description: item.description || undefined,
-        quantity: item.quantity,
-        unitType: item.item.unitType,
-        rate: item.rate,
-        total: item.total
-      })),
+      items: [],
+      // items: invoice.items.map(item => ({
+      //   name: item.item.name,
+      //   description: item.description || undefined,
+      //   quantity: item.quantity,
+      //   unitType: item.item.unitType,
+      //   rate: item.rate,
+      //   total: item.total
+      // })),
       totals: {
         subtotal: invoice.subtotal,
         discountAmount: invoice.discountAmount,
@@ -117,7 +118,7 @@ export async function GET(
     // Generate PDF
     const pdfBuffer = await generateInvoicePDF(template.htmlContent, templateData)
 
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(new Uint8Array(pdfBuffer), {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="invoice-${invoice.invoiceNumber}.pdf"`

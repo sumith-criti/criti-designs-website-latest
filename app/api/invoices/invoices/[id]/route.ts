@@ -41,9 +41,9 @@ export async function GET(
       include: {
         client: true,
         items: {
-          include: {
-            item: true
-          }
+          // include: {
+          //   item: true
+          // }
         },
         payments: true,
         template: true
@@ -108,21 +108,21 @@ export async function PUT(
         notes: data.notes || null,
         templateId: data.templateId || null,
         items: {
-          create: data.items.map(item => ({
-            itemId: item.itemId,
-            quantity: item.quantity,
-            rate: item.rate,
-            total: item.quantity * item.rate,
-            description: item.description || null
-          }))
+          // create: data.items.map(item => ({
+          //   itemId: item.itemId,
+          //   quantity: item.quantity,
+          //   rate: item.rate,
+          //   total: item.quantity * item.rate,
+          //   description: item.description || null
+          // }))
         }
       },
       include: {
         client: true,
         items: {
-          include: {
-            item: true
-          }
+          // include: {
+          //   item: true
+          // }
         }
       }
     })

@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
 
     if (format === 'excel') {
       const buffer = generateExcelBuffer(exportData)
-      return new NextResponse(buffer, {
+      return new NextResponse(new Uint8Array(buffer), {
         headers: {
           'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
           'Content-Disposition': 'attachment; filename="clients.xlsx"'

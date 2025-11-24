@@ -35,14 +35,15 @@ export interface TemplateData {
     ifsc?: string
     branch?: string
   }
-  items: Array<{
-    name: string
-    description?: string
-    quantity: number
-    unitType: string
-    rate: number
-    total: number
-  }>
+  items: any
+  // items: Array<{
+  //   name: string
+  //   description?: string
+  //   quantity: number
+  //   unitType: string
+  //   rate: number
+  //   total: number
+  // }>
   totals: {
     subtotal: number
     discountAmount: number
@@ -132,15 +133,16 @@ export function renderTemplate(template: string, data: TemplateData): string {
 function renderItemsTable(items: TemplateData['items']): string {
   if (items.length === 0) return ''
 
-  const rows = items.map((item, index) => `
-    <tr>
-      <td>${index + 1}</td>
-      <td>${item.name}${item.description ? `<br><small>${item.description}</small>` : ''}</td>
-      <td>${item.quantity} ${item.unitType}</td>
-      <td>${formatCurrency(item.rate)}</td>
-      <td>${formatCurrency(item.total)}</td>
-    </tr>
-  `).join('')
+  // const rows = items.map((item, index) => `
+  //   <tr>
+  //     <td>${index + 1}</td>
+  //     <td>${item.name}${item.description ? `<br><small>${item.description}</small>` : ''}</td>
+  //     <td>${item.quantity} ${item.unitType}</td>
+  //     <td>${formatCurrency(item.rate)}</td>
+  //     <td>${formatCurrency(item.total)}</td>
+  //   </tr>
+  // `).join('')
+  const rows = ''
 
   return `
     <table class="items-table">
