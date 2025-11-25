@@ -3,24 +3,19 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  LayoutDashboard,
-  Users,
-  Package,
-  FileText,
-  Settings,
-  LogOut,
-  Receipt
+  LogOut
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { signOut } from 'next-auth/react'
 
-const navigation = [
-  { name: 'Dashboard', href: '/invoices/dashboard', icon: LayoutDashboard },
-  { name: 'Invoices', href: '/invoices', icon: FileText },
-  { name: 'Clients', href: '/invoices/clients', icon: Users },
-  { name: 'Items', href: '/invoices/items', icon: Package },
-  { name: 'Templates', href: '/invoices/templates', icon: Receipt },
-  { name: 'Settings', href: '/invoices/settings', icon: Settings }
+// Invoice section disabled
+const navigation: Array<{ name: string; href: string; icon: any }> = [
+  // { name: 'Dashboard', href: '/invoices/dashboard', icon: LayoutDashboard },
+  // { name: 'Invoices', href: '/invoices', icon: FileText },
+  // { name: 'Clients', href: '/invoices/clients', icon: Users },
+  // { name: 'Items', href: '/invoices/items', icon: Package },
+  // { name: 'Templates', href: '/invoices/templates', icon: Receipt },
+  // { name: 'Settings', href: '/invoices/settings', icon: Settings }
 ]
 
 export default function Sidebar() {

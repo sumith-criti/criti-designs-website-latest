@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useInView } from "react-intersection-observer"
+import { X, Check } from "lucide-react"
+import Testimonials from "@/components/Testimonials"
 
 export default function Home() {
   const scrollToContact = () => {
@@ -141,222 +143,232 @@ export default function Home() {
       </SectionWrapper>
 
       {/* 3️⃣ Why Design Matters Section */}
-      <SectionWrapper className="bg-white">
-        <AnimatedSection>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-12 text-center">
+      <section className="w-full py-24 bg-[#FAFAF7]">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-semibold text-[#333333] text-center mb-16">
             Why Design Matters
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
-            {/* House A */}
-            <AnimatedCard delay={0.1}>
-              <div className="bg-red-50 border-2 border-red-200 p-8 rounded-2xl shadow-md">
-                <h3 className="font-heading text-2xl font-bold text-red-700 mb-6">
-                  House A: Designed by Room Count
-                </h3>
-                <ul className="space-y-3 text-secondary/80 font-body">
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2">×</span>
-                    <span>Feels hot and stuffy</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2">×</span>
-                    <span>Wasted space</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2">×</span>
-                    <span>Lacks family connection</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2">×</span>
-                    <span>Poor natural lighting</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2">×</span>
-                    <span>Inadequate ventilation</span>
-                  </li>
-                </ul>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-16"
+          >
+            <div>
+              <h3 className="text-xl font-semibold text-[#D9534F] mb-6">
+                Common Home Problems
+              </h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-3">
+                  <X className="text-[#D9534F] mt-1" size={18} />
+                  <div>
+                    <h4 className="font-medium text-[#333]">Feels hot &amp; stuffy</h4>
+                    <p className="text-gray-600 text-sm">Poor cross-ventilation leads to trapped warm air.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <X className="text-[#D9534F] mt-1" size={18} />
+                  <div>
+                    <h4 className="font-medium text-[#333]">Wasted space</h4>
+                    <p className="text-gray-600 text-sm">Fragmented rooms and unused corners reduce livability.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <X className="text-[#D9534F] mt-1" size={18} />
+                  <div>
+                    <h4 className="font-medium text-[#333]">Dark interiors</h4>
+                    <p className="text-gray-600 text-sm">Limited window placement blocks natural daylight.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <X className="text-[#D9534F] mt-1" size={18} />
+                  <div>
+                    <h4 className="font-medium text-[#333]">Weak family connection</h4>
+                    <p className="text-gray-600 text-sm">Disjointed layouts keep people isolated in their rooms.</p>
+                  </div>
+                </div>
               </div>
-            </AnimatedCard>
+            </div>
 
-            {/* House B */}
-            <AnimatedCard delay={0.2}>
-              <div className="bg-green-50 border-2 border-primary p-8 rounded-2xl shadow-md">
-                <h3 className="font-heading text-2xl font-bold text-primary mb-6">
-                  House B: Designed for Life
-                </h3>
-                <ul className="space-y-3 text-secondary/80 font-body">
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">✓</span>
-                    <span>Bright and well-ventilated</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">✓</span>
-                    <span>Efficient use of space</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">✓</span>
-                    <span>Creates family connection</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">✓</span>
-                    <span>Optimized natural lighting</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary mr-2">✓</span>
-                    <span>Future-ready design</span>
-                  </li>
-                </ul>
+            <div className="md:border-l md:pl-12">
+              <h3 className="text-xl font-semibold text-[#7A9C5B] mb-6">
+                Benefits of Thoughtful Design
+              </h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-3">
+                  <Check className="text-[#7A9C5B] mt-1" size={18} />
+                  <div>
+                    <h4 className="font-medium text-[#333]">Cool, naturally ventilated spaces</h4>
+                    <p className="text-gray-600 text-sm">Aligned openings pull fresh air through every room.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="text-[#7A9C5B] mt-1" size={18} />
+                  <div>
+                    <h4 className="font-medium text-[#333]">Optimized usable space</h4>
+                    <p className="text-gray-600 text-sm">Smart zoning ensures every square foot works harder.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="text-[#7A9C5B] mt-1" size={18} />
+                  <div>
+                    <h4 className="font-medium text-[#333]">Bright, daylit interiors</h4>
+                    <p className="text-gray-600 text-sm">Sunlight is guided deep into the home using courtyards.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="text-[#7A9C5B] mt-1" size={18} />
+                  <div>
+                    <h4 className="font-medium text-[#333]">Family-centric planning</h4>
+                    <p className="text-gray-600 text-sm">Shared cores keep the family connected throughout the day.</p>
+                  </div>
+                </div>
               </div>
-            </AnimatedCard>
-          </div>
+            </div>
+          </motion.div>
 
-          {/* Quote */}
+          <p className="italic text-2xl md:text-3xl text-center text-[#333333] mt-20">
+            &ldquo;Beautiful homes aren't expensive — badly planned ones are.&rdquo;
+          </p>
+        </div>
+      </section>
+
+      {/* 4️⃣ Why Choose Us Section */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
           >
-            <p className="text-2xl md:text-3xl font-heading font-bold text-secondary italic max-w-4xl mx-auto">
-              &ldquo;Beautiful homes aren&apos;t expensive — badly planned ones are.&rdquo;
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
+              Why Choose Us
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+              What makes Criti Designs the most trusted architecture & design partner.
             </p>
           </motion.div>
-        </AnimatedSection>
-      </SectionWrapper>
 
-      {/* 4️⃣ Design Packages Section */}
-      <SectionWrapper>
-        <AnimatedSection>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-12 text-center">
-            Design Packages
-          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {/* Quality & Craftsmanship */}
+            <AnimatedCard delay={0.1}>
+              <div className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full">
+                <div className="mb-6">
+                  <svg
+                    className="w-12 h-12 text-[#A4C37D]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
+                  Quality & Craftsmanship
+                </h3>
+                <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+                  We deliver thoughtful, high-quality design solutions with precision and attention to detail.
+                </p>
+              </div>
+            </AnimatedCard>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
-            <PackageCard
-              title="Concept Design Package"
-              description="Floor plan, furniture layout, and 3D exterior."
-              price="₹20–₹25/sqft"
-              delay={0.1}
-            />
-            <PackageCard
-              title="Comprehensive Architectural Package"
-              description="Permits, interiors, working drawings, 10 guided visits."
-              price="₹150/sqft"
-              delay={0.2}
-            />
-            <PackageCard
-              title="Full Engineering Package"
-              description="Structural, MEP, elevation working drawings."
-              price="₹100/sqft"
-              delay={0.3}
-            />
-            <PackageCard
-              title="Basic Engineering Package"
-              description="Essential working drawings."
-              price="₹50/sqft"
-              delay={0.4}
-            />
+            {/* Budget Transparency */}
+            <AnimatedCard delay={0.2}>
+              <div className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full">
+                <div className="mb-6">
+                  <svg
+                    className="w-12 h-12 text-[#A4C37D]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
+                  Budget Transparency
+                </h3>
+                <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+                  No hidden costs. We plan every project with clarity and predictable outcomes.
+                </p>
+              </div>
+            </AnimatedCard>
+
+            {/* Sustainable Design */}
+            <AnimatedCard delay={0.3}>
+              <div className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full">
+                <div className="mb-6">
+                  <svg
+                    className="w-12 h-12 text-[#A4C37D]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
+                  Sustainable Design
+                </h3>
+                <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+                  Eco-friendly materials and energy-efficient concepts integrated into every project.
+                </p>
+              </div>
+            </AnimatedCard>
+
+            {/* Smart Space Planning */}
+            <AnimatedCard delay={0.4}>
+              <div className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full">
+                <div className="mb-6">
+                  <svg
+                    className="w-12 h-12 text-[#A4C37D]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
+                  Smart Space Planning
+                </h3>
+                <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+                  Compact, functional, and elegant floor plans optimized for modern living.
+                </p>
+              </div>
+            </AnimatedCard>
           </div>
+        </div>
+      </section>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-8 text-center text-secondary/70 font-body max-w-3xl mx-auto"
-          >
-            <strong>Note:</strong> All design fees are adjusted if you move to Build or Turnkey packages.
-          </motion.p>
-        </AnimatedSection>
-      </SectionWrapper>
+      {/* 5️⃣ Client Testimonials Section */}
+      <Testimonials />
 
-      {/* 5️⃣ Build & Turnkey Section */}
-      <SectionWrapper className="bg-white">
-        <AnimatedSection>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-12 text-center">
-            Build & Turnkey Packages
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
-            <BuildCard
-              title="Construction Package"
-              description="Architectural, engineering, and management services"
-              price="₹1900–₹3000/sqft"
-              image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop"
-              delay={0.1}
-            />
-            <BuildCard
-              title="Turnkey Package"
-              description="End-to-end design, interiors, and handover"
-              price="₹1900–₹3000/sqft"
-              image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
-              delay={0.2}
-            />
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center text-xl md:text-2xl font-heading font-bold text-secondary max-w-4xl mx-auto"
-          >
-            No surprises. No overruns. Every detail aligned to your lifestyle.
-          </motion.p>
-        </AnimatedSection>
-      </SectionWrapper>
-
-      {/* 6️⃣ Add-ons Section */}
-      <SectionWrapper>
-        <AnimatedSection>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-12 text-center">
-            Add-on Services
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-            <AddonCard
-              title="3D Exterior Elevation"
-              price="₹3/sqft"
-              delay={0.1}
-            />
-            <AddonCard
-              title="Interior Design"
-              price="₹30/sqft"
-              delay={0.2}
-            />
-            <AddonCard
-              title="Permit Support"
-              price="₹10/sqft"
-              delay={0.3}
-            />
-            <AddonCard
-              title="Completion Docs"
-              price="₹5/sqft"
-              delay={0.4}
-            />
-            <AddonCard
-              title="Site Visits"
-              price="₹2,500–₹7,500"
-              delay={0.5}
-              fullWidth
-            />
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-8 text-center text-secondary/70 font-body max-w-3xl mx-auto"
-          >
-            Visits can be pre-scheduled based on project stage.
-          </motion.p>
-        </AnimatedSection>
-      </SectionWrapper>
-
-      {/* 7️⃣ Contact / CTA Section */}
+      {/* 6️⃣ Contact / CTA Section */}
       <SectionWrapper id="contact" className="bg-secondary text-white">
         <AnimatedSection>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-center">
@@ -432,6 +444,50 @@ export default function Home() {
           </motion.div>
         </AnimatedSection>
       </SectionWrapper>
+
+      {/* 7️⃣ Final CTA Section */}
+      <section className="bg-[#A4C37D] py-20">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
+              Ready to Build Your Dream Space?
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 mb-8" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+              Let&apos;s design something beautiful, functional, and sustainable—together.
+            </p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <a
+                href="#contact"
+                className="inline-block bg-white text-[#333333] font-semibold px-8 py-4 rounded-full shadow-md hover:bg-[#FAFAF7] hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                Get a Free Consultation
+              </a>
+            </motion.div>
+
+            <p className="mt-6 text-white/80 text-sm md:text-base" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+              Or contact us directly at{' '}
+              <a
+                href="mailto:info@critidesigns.com"
+                className="text-white underline hover:text-white/90 transition-colors"
+              >
+                info@critidesigns.com
+              </a>
+            </p>
+          </motion.div>
+        </div>
+      </section>
     </div>
   )
 }
@@ -482,68 +538,6 @@ function AnimatedCard({ children, delay = 0 }: { children: React.ReactNode, dela
     >
       {children}
     </motion.div>
-  )
-}
-
-function PackageCard({ title, description, price, delay }: { title: string, description: string, price: string, delay: number }) {
-  return (
-    <AnimatedCard delay={delay}>
-      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
-        <h3 className="font-heading text-xl font-bold text-secondary mb-4">
-          {title}
-        </h3>
-        <p className="text-secondary/70 font-body mb-6 flex-grow">
-          {description}
-        </p>
-        <p className="text-2xl font-heading font-bold text-primary">
-          {price}
-        </p>
-      </div>
-    </AnimatedCard>
-  )
-}
-
-function BuildCard({ title, description, price, image, delay }: { title: string, description: string, price: string, image: string, delay: number }) {
-  return (
-    <AnimatedCard delay={delay}>
-      <div className="relative rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group">
-        <div className="relative h-64 md:h-80">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/50 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-            <h3 className="font-heading text-2xl md:text-3xl font-bold mb-2">
-              {title}
-            </h3>
-            <p className="text-gray-200 mb-4 font-body">
-              {description}
-            </p>
-            <p className="text-2xl md:text-3xl font-heading font-bold text-primary">
-              {price}
-            </p>
-          </div>
-        </div>
-      </div>
-    </AnimatedCard>
-  )
-}
-
-function AddonCard({ title, price, delay, fullWidth = false }: { title: string, price: string, delay: number, fullWidth?: boolean }) {
-  return (
-    <AnimatedCard delay={delay}>
-      <div className={`bg-white p-6 md:p-8 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 ${fullWidth ? 'md:col-span-2 lg:col-span-2 lg:col-start-2' : ''}`}>
-        <h3 className="font-heading text-xl font-bold text-secondary mb-3">
-          {title}
-        </h3>
-        <p className="text-2xl font-heading font-bold text-primary">
-          {price}
-        </p>
-      </div>
-    </AnimatedCard>
   )
 }
 
