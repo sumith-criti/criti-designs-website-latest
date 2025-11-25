@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useInView } from "react-intersection-observer"
-import { X, Check } from "lucide-react"
 import Testimonials from "@/components/Testimonials"
 
 export default function Home() {
@@ -142,97 +141,11 @@ export default function Home() {
         </AnimatedSection>
       </SectionWrapper>
 
-      {/* 3️⃣ Why Design Matters Section */}
-      <section className="w-full py-24 bg-[#FAFAF7]">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#333333] text-center mb-16">
-            Why Design Matters
-          </h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-16"
-          >
-            <div>
-              <h3 className="text-xl font-semibold text-[#D9534F] mb-6">
-                Common Home Problems
-              </h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-3">
-                  <X className="text-[#D9534F] mt-1" size={18} />
-                  <div>
-                    <h4 className="font-medium text-[#333]">Feels hot &amp; stuffy</h4>
-                    <p className="text-gray-600 text-sm">Poor cross-ventilation leads to trapped warm air.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <X className="text-[#D9534F] mt-1" size={18} />
-                  <div>
-                    <h4 className="font-medium text-[#333]">Wasted space</h4>
-                    <p className="text-gray-600 text-sm">Fragmented rooms and unused corners reduce livability.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <X className="text-[#D9534F] mt-1" size={18} />
-                  <div>
-                    <h4 className="font-medium text-[#333]">Dark interiors</h4>
-                    <p className="text-gray-600 text-sm">Limited window placement blocks natural daylight.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <X className="text-[#D9534F] mt-1" size={18} />
-                  <div>
-                    <h4 className="font-medium text-[#333]">Weak family connection</h4>
-                    <p className="text-gray-600 text-sm">Disjointed layouts keep people isolated in their rooms.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="md:border-l md:pl-12">
-              <h3 className="text-xl font-semibold text-[#7A9C5B] mb-6">
-                Benefits of Thoughtful Design
-              </h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-3">
-                  <Check className="text-[#7A9C5B] mt-1" size={18} />
-                  <div>
-                    <h4 className="font-medium text-[#333]">Cool, naturally ventilated spaces</h4>
-                    <p className="text-gray-600 text-sm">Aligned openings pull fresh air through every room.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Check className="text-[#7A9C5B] mt-1" size={18} />
-                  <div>
-                    <h4 className="font-medium text-[#333]">Optimized usable space</h4>
-                    <p className="text-gray-600 text-sm">Smart zoning ensures every square foot works harder.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Check className="text-[#7A9C5B] mt-1" size={18} />
-                  <div>
-                    <h4 className="font-medium text-[#333]">Bright, daylit interiors</h4>
-                    <p className="text-gray-600 text-sm">Sunlight is guided deep into the home using courtyards.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Check className="text-[#7A9C5B] mt-1" size={18} />
-                  <div>
-                    <h4 className="font-medium text-[#333]">Family-centric planning</h4>
-                    <p className="text-gray-600 text-sm">Shared cores keep the family connected throughout the day.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          <p className="italic text-2xl md:text-3xl text-center text-[#333333] mt-20">
-            &ldquo;Beautiful homes aren't expensive — badly planned ones are.&rdquo;
-          </p>
-        </div>
+      {/* Quote Section */}
+      <section className="py-24 bg-[#FAFAF7]">
+        <p className="font-semibold italic text-3xl md:text-4xl text-center text-[#333333] max-w-4xl mx-auto px-4 leading-snug">
+          &ldquo;Beautiful homes aren't expensive — badly planned ones are.&rdquo;
+        </p>
       </section>
 
       {/* 4️⃣ Why Choose Us Section */}
