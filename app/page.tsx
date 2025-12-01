@@ -90,6 +90,85 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Featured Projects Section */}
+      <section className="py-20 bg-white">
+        <h2 className="text-4xl md:text-5xl font-semibold text-center mb-12 text-[#333333]" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
+          Featured Projects
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto px-4">
+          {/* Project 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="relative h-64">
+              <Image
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
+                alt="Modern Residential Project"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* Project 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="relative h-64">
+              <Image
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
+                alt="Sustainable Home Design"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* Project 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="relative h-64">
+              <Image
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop"
+                alt="Luxury Architecture"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex justify-center mt-12"
+        >
+          <a
+            href="/projects"
+            className="px-8 py-4 bg-[#A4C37D] text-white font-medium rounded-full hover:bg-[#7A9C5B] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
+          >
+            See More
+          </a>
+        </motion.div>
+      </section>
+
       {/* 2️⃣ About Section */}
       <SectionWrapper>
         <AnimatedSection>
