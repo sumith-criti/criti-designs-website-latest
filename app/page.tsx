@@ -103,15 +103,19 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="relative h-64">
-              <Image
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
+            <div className="relative group rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop" 
                 alt="Modern Residential Project"
-                fill
-                className="object-cover"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
               />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <div>
+                  <h3 className="text-white text-lg font-semibold">Modern Residential</h3>
+                  <p className="text-gray-200 text-sm">Payyanur, Kerala</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -121,15 +125,19 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="relative h-64">
-              <Image
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
+            <div className="relative group rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" 
                 alt="Sustainable Home Design"
-                fill
-                className="object-cover"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
               />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <div>
+                  <h3 className="text-white text-lg font-semibold">Sustainable Design</h3>
+                  <p className="text-gray-200 text-sm">Green Building Project</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -139,15 +147,19 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="relative h-64">
-              <Image
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop"
+            <div className="relative group rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop" 
                 alt="Luxury Architecture"
-                fill
-                className="object-cover"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
               />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <div>
+                  <h3 className="text-white text-lg font-semibold">Luxury Residence</h3>
+                  <p className="text-gray-200 text-sm">Contemporary Design</p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
