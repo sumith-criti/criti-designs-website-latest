@@ -316,7 +316,8 @@ export default function Home() {
             <ContactInfo
               icon="📍"
               label="Location"
-              value="Kerala, India"
+              value="Payyanur, Kerala"
+              href="https://www.google.com/maps/place/CRITI/@12.1192767,75.1994739,16z/data=!3m1!4b1!4m6!3m5!1s0x3ba46d5dbb74b18d:0x2c8a17994fd4748f!8m2!3d12.1192767!4d75.1994739!16s%2Fg%2F11f7qyw08p?entry=ttu"
               delay={0.4}
             />
           </div>
@@ -338,7 +339,7 @@ export default function Home() {
             </a>
           </motion.div>
 
-          {/* Optional: Map placeholder */}
+          {/* Google Maps Embed */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -347,12 +348,17 @@ export default function Home() {
             className="mt-12 max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg"
           >
             <div className="relative h-64 md:h-96 bg-gray-300">
-              <Image
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&h=600&fit=crop"
-                alt="Kerala, India"
-                fill
-                className="object-cover"
-              />
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.1234567890123!2d75.1994739!3d12.1192767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba46d5dbb74b18d%3A0x2c8a17994fd4748f!2sCRITI!5e0!3m2!1sen!2sin!4v1733034856000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="CRITI - Payyanur Location"
+                className="w-full h-full"
+              ></iframe>
             </div>
           </motion.div>
         </AnimatedSection>

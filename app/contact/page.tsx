@@ -192,19 +192,25 @@ export default function Contact() {
                     <h3 className="font-semibold text-lg text-charcoal mb-2">Studio Address</h3>
                     <p className="text-gray-600">
                       Criti Developers LLP<br />
-                      Studio Address<br />
-                      City, State - ZIP Code<br />
-                      India
+                      AHAMMED COMPLEX<br />
+                      Thayineri Road, Payyanur<br />
+                      Kerala 670307, India
                     </p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-charcoal mb-2">Phone</h3>
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+917306612105"
                       className="text-gray-600 hover:text-muted-gold transition-colors"
                     >
-                      +1 (234) 567-890
+                      +91 73066 12105
                     </a>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg text-charcoal mb-2">Business Hours</h3>
+                    <p className="text-gray-600">
+                      Open · Closes 5 PM
+                    </p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg text-charcoal mb-2">Email</h3>
@@ -219,7 +225,7 @@ export default function Contact() {
                     <h3 className="font-semibold text-lg text-charcoal mb-4">Follow Us</h3>
                     <div className="flex space-x-4">
                       <a
-                        href="https://instagram.com"
+                        href="https://www.instagram.com/critidesigns/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-2xl hover:text-muted-gold transition-colors"
@@ -228,7 +234,7 @@ export default function Contact() {
                         📷
                       </a>
                       <a
-                        href="https://facebook.com"
+                        href="https://www.facebook.com/critidesign"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-2xl hover:text-muted-gold transition-colors"
@@ -237,13 +243,22 @@ export default function Contact() {
                         📘
                       </a>
                       <a
-                        href="https://wa.me/"
+                        href="https://wa.me/917306612105"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-2xl hover:text-muted-gold transition-colors"
                         aria-label="WhatsApp"
                       >
                         💬
+                      </a>
+                      <a
+                        href="https://www.youtube.com/channel/UCFSPUEHSdpMsEgA7HUaEfaw"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-2xl hover:text-muted-gold transition-colors"
+                        aria-label="YouTube"
+                      >
+                        ▶️
                       </a>
                     </div>
                   </div>
@@ -253,14 +268,14 @@ export default function Contact() {
               {/* Map */}
               <div className="bg-gray-200 rounded-sm overflow-hidden" style={{ height: '400px' }}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.1234567890123!2d72.8776559!3d19.0759837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA0JzMzLjUiTiA3MsKwNTInMzkuNiJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.1234567890123!2d75.1994739!3d12.1192767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba46d5dbb74b18d%3A0x2c8a17994fd4748f!2sCRITI!5e0!3m2!1sen!2sin!4v1733034856000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Studio Location"
+                  title="CRITI - Payyanur Location"
                 ></iframe>
               </div>
             </motion.div>
