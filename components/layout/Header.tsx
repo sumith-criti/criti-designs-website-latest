@@ -13,7 +13,7 @@ export default function Header() {
       <div className="flex items-center space-x-4">
         <div className="text-sm text-gray-600">
           <span className="font-medium">{session?.user?.name}</span>
-          <span className="ml-2 text-gray-400">({session?.user?.role})</span>
+          {/* <span className="ml-2 text-gray-400">({session?.user?.role})</span> */}
         </div>
       </div>
     </header>
