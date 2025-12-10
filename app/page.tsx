@@ -9,11 +9,6 @@ import TrustBadges from "@/components/TrustBadges"
 import ContactForm from "@/components/ContactForm"
 
 export default function Home() {
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact')
-    contactSection?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -65,19 +60,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-100 mb-8 font-body max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-gray-100 font-body max-w-3xl mx-auto"
           >
             Complete turnkey construction, interior design, renovation, and architectural services. Serving Kannur, Payyannur, Taliparamba & surrounding areas with 10+ years of experience.
           </motion.p>
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            onClick={scrollToContact}
-            className="inline-block px-8 py-4 bg-primary text-white font-heading font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
-            Get Free Consultation
-          </motion.button>
         </motion.div>
 
         {/* Scroll Indicator */}
