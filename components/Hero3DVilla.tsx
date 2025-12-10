@@ -2,170 +2,219 @@
 
 import React, { useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { PerspectiveCamera, OrbitControls } from '@react-three/drei'
-import { EffectComposer, Bloom } from '@react-three/postprocessing'
+import { PerspectiveCamera, useScroll, OrbitControls } from '@react-three/drei'
+import { EffectComposer, Bloom, SMAA } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
-// --- 1. Custom Shader Material for Wireframe ---
-const vertexShader = `
-  uniform float uTime;
-  varying vec2 vUv;
-  
-  void main() {
-    vUv = uv;
-    vec3 pos = position;
-    
-    // Subtle wobble based on position and time (Vertex Displacement)
-    float wobble = sin(uTime * 0.5 + pos.y * 2.0) * 0.02;
-    float breathe = sin(uTime * 0.2) * 0.01;
-    
-    pos.x += wobble;
-    pos.z += wobble;
-    pos += normal * breathe; 
-    
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-  }
-`
+// --- 1. Architectural Materials ---
 
-const fragmentShader = `
-  uniform vec3 uColor;
-  uniform float uTime;
-  uniform float uIntensity;
-  
-  void main() {
-    // Breathing opacity
-    float alpha = 0.4 + 0.3 * sin(uTime * 0.8);
-    
-    gl_FragColor = vec4(uColor * uIntensity, alpha);
-  }
-`
+// Glass Material (Physical)
+const GLASS_MATERIAL = new THREE.MeshPhysicalMaterial({
+    color: '#ffffff',
+    metalness: 0.1,
+    roughness: 0.05,
+    transmission: 0.95, // Glass effect
+    thickness: 0.5,
+    clearcoat: 1,
+    transparent: true,
+    opacity: 0.8
+})
 
-function ModernVillaBlock({ position, args, color }: { position: [number, number, number], args: [number, number, number], color: string }) {
-    const meshRef = useRef<THREE.Mesh>(null)
+// Concrete/Wall Material
+const WALL_MATERIAL = new THREE.MeshStandardMaterial({
+    color: '#f5f5f5',
+    roughness: 0.8,
+    metalness: 0.1
+})
 
-    // Create shader material instance
-    const material = useMemo(() => {
-        return new THREE.ShaderMaterial({
-            uniforms: {
-                uTime: { value: 0 },
-                uColor: { value: new THREE.Color(color) },
-                uIntensity: { value: 1.5 }
-            },
-            vertexShader,
-            fragmentShader,
-            transparent: true,
-            wireframe: true, // Key for wireframe look
-            side: THREE.DoubleSide
-        })
-    }, [color])
+// Brand Accent Material
+const ACCENT_MATERIAL = new THREE.MeshStandardMaterial({
+    color: '#8AA46A',
+    roughness: 0.4,
+    metalness: 0.2
+})
 
-    useFrame((state) => {
-        if (material) {
-            material.uniforms.uTime.value = state.clock.getElapsedTime()
-        }
-    })
+// --- 2. Components ---
+
+function ArchitecturalBlock({ position, args, type = 'wall', color }: { position: [number, number, number], args: [number, number, number], type?: 'wall' | 'glass' | 'accent', color?: string }) {
+    // Use appropriate material
+    let material
+    if (type === 'glass') material = GLASS_MATERIAL
+    else if (type === 'accent') material = ACCENT_MATERIAL
+    else material = WALL_MATERIAL
 
     return (
-        <mesh ref={meshRef} position={position}>
-            <boxGeometry args={args} />
-            <primitive object={material} attach="material" />
-        </mesh>
+        <group position={position}>
+            {/* Solid Volume */}
+            <mesh receiveShadow castShadow material={material}>
+                <boxGeometry args={args} />
+            </mesh>
+
+            {/* Structural Edges (Wireframe Overlay) */}
+            <lineSegments>
+                <edgesGeometry args={[new THREE.BoxGeometry(...args)]} />
+                <lineBasicMaterial color={type === 'glass' ? '#a0a0a0' : '#d4d4d4'} transparent opacity={0.3} />
+            </lineSegments>
+        </group>
     )
 }
 
-function ProceduralVilla() {
+function Pool({ position, args }: { position: [number, number, number], args: [number, number, number] }) {
+    return (
+        <group position={position}>
+            {/* Water */}
+            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.1, 0]}>
+                <planeGeometry args={[args[0], args[2]]} />
+                <meshPhysicalMaterial
+                    color="#4fa1c7"
+                    roughness={0.1}
+                    metalness={0.1}
+                    transmission={0.6}
+                    thickness={1}
+                    transparent
+                    opacity={0.8}
+                />
+            </mesh>
+            {/* Basin */}
+            <mesh position={[0, -0.1, 0]}>
+                <boxGeometry args={[args[0] + 0.2, 0.2, args[2] + 0.2]} />
+                <meshStandardMaterial color="#dddddd" />
+            </mesh>
+        </group>
+    )
+}
+
+function ProceduralVilla({ scrollY }: { scrollY: React.MutableRefObject<number> }) {
     const groupRef = useRef<THREE.Group>(null)
 
     useFrame((state) => {
         if (groupRef.current) {
-            // Subtle floating/drift rotatation
-            // Sine wave ensures it rocks back and forth gently instead of spinning endlessly
-            groupRef.current.rotation.y = Math.sin(state.clock.getElapsedTime() * 0.15) * 0.15
+            // 1. Idle Animation (Floating)
+            const t = state.clock.getElapsedTime()
+            const floatY = Math.sin(t * 0.5) * 0.1
+
+            // 2. Scroll Animation
+            // Use scrollY ref directly for smooth, non-reactive updates
+            const currentScroll = scrollY.current || 0
+
+            // Rotate based on scroll (Full 180 deg rotation over 1000px scroll)
+            const scrollRot = currentScroll * 0.001
+
+            // Parallax Lift (Move up as you scroll down)
+            const scrollLift = currentScroll * 0.003
+
+            // Apply
+            groupRef.current.rotation.y = 0.5 + Math.sin(t * 0.1) * 0.05 + scrollRot
+            groupRef.current.position.y = floatY + scrollLift
         }
     })
 
     return (
         <group ref={groupRef}>
-            {/* Ground Floor - Main Volume */}
-            <ModernVillaBlock position={[0, -1, 0]} args={[5, 2, 4]} color="#e5f3ff" />
+            {/* --- Ground Floor --- */}
+            {/* Main Living Area (Glass walls) */}
+            <ArchitecturalBlock position={[0, -1, 0]} args={[5, 2, 4]} type="glass" />
+            {/* Floor Slab */}
+            <ArchitecturalBlock position={[0, -2.1, 0]} args={[5.2, 0.2, 4.2]} type="wall" />
+            {/* Ceiling Slab */}
+            <ArchitecturalBlock position={[0, 0.1, 0]} args={[5.2, 0.2, 4.2]} type="wall" />
 
-            {/* First Floor - Cantilever */}
-            <ModernVillaBlock position={[0.8, 1.2, 0.5]} args={[3.8, 1.8, 4.5]} color="#ffffff" />
+            {/* --- First Floor (Cantilever) --- */}
+            {/* Bedroom Block (Solid + Glass front) */}
+            <ArchitecturalBlock position={[1, 1.2, 0.5]} args={[3.5, 1.8, 4.5]} type="wall" />
+            {/* Glass Front */}
+            <ArchitecturalBlock position={[1, 1.2, 2.76]} args={[3.3, 1.6, 0.1]} type="glass" />
 
-            {/* Vertical Feature / Chimney / Lift shaft - Accent Color */}
-            <ModernVillaBlock position={[-1.8, 0.5, 1]} args={[1.2, 4.5, 1.5]} color="#8AA46A" />
+            {/* --- Vertical Feature (Stairwell/Lift) --- */}
+            <ArchitecturalBlock position={[-1.5, 0.5, 1]} args={[1, 5, 1.5]} type="accent" />
 
-            {/* Entrance / Deck */}
-            <ModernVillaBlock position={[2, -1.9, 2]} args={[2.5, 0.1, 3]} color="#8AA46A" />
+            {/* --- Details --- */}
+            {/* Entrance Deck columns */}
+            <ArchitecturalBlock position={[2, -1, 1.8]} args={[0.2, 2, 0.2]} type="wall" />
+            <ArchitecturalBlock position={[0.5, -1, 1.8]} args={[0.2, 2, 0.2]} type="wall" />
 
-            {/* Roof Detail */}
-            <ModernVillaBlock position={[0.8, 2.15, 0.5]} args={[4, 0.1, 4.7]} color="#e5f3ff" />
+            {/* Pool / Water Feature */}
+            <Pool position={[3, -2.1, 1]} args={[3, 0.2, 5]} />
         </group>
     )
 }
 
-function Scene({ enableAnimation }: { enableAnimation: boolean }) {
+function Scene({ scrollY }: { scrollY: React.MutableRefObject<number> }) {
     return (
         <>
-            <PerspectiveCamera makeDefault position={[8, 4, 8]} fov={40} />
-            <OrbitControls
-                enableZoom={false}
-                enablePan={false}
-                autoRotate={enableAnimation}
-                autoRotateSpeed={0.3}
-                minPolarAngle={Math.PI / 3}
-                maxPolarAngle={Math.PI / 2}
+            <PerspectiveCamera makeDefault position={[8, 5, 12]} fov={35} />
+            <OrbitControls target={[0, 1, 0]} enableZoom={false} enablePan={false} maxPolarAngle={Math.PI / 2} />
+
+            {/* Lighting Setup for Realism */}
+            <ambientLight intensity={0.4} />
+            <directionalLight
+                position={[10, 20, 10]}
+                intensity={1.5}
+                castShadow
+                shadow-bias={-0.0001}
             />
+            {/* Rim Light for Accent */}
+            <spotLight position={[-10, 10, -5]} intensity={2} color="#8AA46A" />
 
-            <ambientLight intensity={0.2} />
-            <directionalLight position={[10, 10, 5]} intensity={0.5} />
-
-            <ProceduralVilla />
+            <ProceduralVilla scrollY={scrollY} />
 
             <EffectComposer disableNormalPass>
                 <Bloom
-                    luminanceThreshold={0.1}
+                    luminanceThreshold={0.8} // Only bloom very bright things (reflections)
                     mipmapBlur
-                    intensity={1.5}
-                    radius={0.5}
+                    intensity={0.4}
+                    radius={0.4}
                 />
+                <SMAA />
             </EffectComposer>
         </>
     )
 }
 
-export default function Hero3DVilla({ accentColor = '#8AA46A', enableIntroAnimation = true }: { accentColor?: string, enableIntroAnimation?: boolean }) {
+// Wrapper to track scroll outside of Canvas 
+// (doing it inside Canvas usually requires ScrollControls which hijacks DOM)
+export default function Hero3DVilla() {
     const [mounted, setMounted] = useState(false)
     const [hasWebGL, setHasWebGL] = useState(true)
+    const scrollY = useRef(0)
 
     useEffect(() => {
         setMounted(true)
-        // Simple WebGL check
+
+        // Check WebGL
         try {
-            const canvas = document.createElement('canvas')
-            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
+            const gl = document.createElement('canvas').getContext('webgl')
             if (!gl) setHasWebGL(false)
-        } catch (e) {
-            setHasWebGL(false)
+        } catch { setHasWebGL(false) }
+
+        // Scroll Tracker
+        const handleScroll = () => {
+            scrollY.current = window.scrollY
         }
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     if (!mounted) return <div className="absolute inset-0 bg-[#1a1a1a]" />
 
     if (!hasWebGL) {
-        // Fallback
         return (
-            <div className="absolute inset-0 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
-                <div className="w-full h-full opacity-10 bg-[linear-gradient(45deg,#ffffff_1px,transparent_1px),linear-gradient(-45deg,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]" />
+            <div className="absolute inset-0 bg-[#1a1a1a] flex items-center justify-center opacity-20">
+                <div className="text-white font-mono">3D View Not Available</div>
             </div>
         )
     }
 
     return (
         <div className="absolute inset-0 w-full h-full bg-[#1a1a1a] z-0">
-            <Canvas dpr={[1, 2]} gl={{ antialias: false, alpha: false, preserveDrawingBuffer: true }}>
+            <Canvas
+                dpr={[1, 2]}
+                shadows
+                camera={{ position: [0, 0, 10], fov: 40 }}
+                gl={{ antialias: false, alpha: false, preserveDrawingBuffer: true, toneMapping: THREE.ACESFilmicToneMapping }}
+            >
                 <color attach="background" args={['#1a1a1a']} />
-                <Scene enableAnimation={enableIntroAnimation} />
+                <Scene scrollY={scrollY} />
             </Canvas>
         </div>
     )
