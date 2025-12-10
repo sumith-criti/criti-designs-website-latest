@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useInView } from 'react-intersection-observer'
+import { Building2, Leaf, Sparkles } from 'lucide-react'
 
 export default function About() {
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -115,22 +116,28 @@ export default function About() {
               Our Philosophy
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-5xl mb-4">🏛️</div>
+              <div className="text-center flex flex-col items-center">
+                <div className="mb-4 text-charcoal flex items-center justify-center">
+                  <Building2 className="w-12 h-12" strokeWidth={1.5} />
+                </div>
                 <h3 className="font-semibold text-xl text-charcoal mb-3">Compact Luxury</h3>
                 <p className="text-gray-600">
                   Maximizing space efficiency without compromising on elegance and comfort.
                 </p>
               </div>
-              <div className="text-center">
-                <div className="text-5xl mb-4">🌱</div>
+              <div className="text-center flex flex-col items-center">
+                <div className="mb-4 text-charcoal flex items-center justify-center">
+                  <Leaf className="w-12 h-12" strokeWidth={1.5} />
+                </div>
                 <h3 className="font-semibold text-xl text-charcoal mb-3">Sustainability</h3>
                 <p className="text-gray-600">
                   Integrating eco-friendly materials and practices into every project.
                 </p>
               </div>
-              <div className="text-center">
-                <div className="text-5xl mb-4">✨</div>
+              <div className="text-center flex flex-col items-center">
+                <div className="mb-4 text-charcoal flex items-center justify-center">
+                  <Sparkles className="w-12 h-12" strokeWidth={1.5} />
+                </div>
                 <h3 className="font-semibold text-xl text-charcoal mb-3">Modern Aesthetics</h3>
                 <p className="text-gray-600">
                   Embracing contemporary design while respecting timeless principles.

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { DraftingCompass, Sparkles, Building2 } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Services() {
@@ -10,7 +11,7 @@ export default function Services() {
 
   const services = [
     {
-      icon: '🏛️',
+      icon: <DraftingCompass className="w-12 h-12" strokeWidth={1.5} />,
       title: 'Architecture & Design',
       description: 'From initial concept to detailed architectural drawings, we create spaces that blend form and function. Our design process emphasizes sustainable practices, optimal space utilization, and aesthetic excellence.',
       features: [
@@ -22,7 +23,7 @@ export default function Services() {
       ],
     },
     {
-      icon: '✨',
+      icon: <Sparkles className="w-12 h-12" strokeWidth={1.5} />,
       title: 'Interior Execution',
       description: 'Transforming architectural visions into lived-in spaces. We handle every aspect of interior execution, from material selection to final installation, ensuring impeccable quality and attention to detail.',
       features: [
@@ -34,7 +35,7 @@ export default function Services() {
       ],
     },
     {
-      icon: '🏗️',
+      icon: <Building2 className="w-12 h-12" strokeWidth={1.5} />,
       title: 'Facade & Contracting',
       description: 'Comprehensive contracting services that bring designs to life. Our expertise spans facade design, construction management, and project execution, ensuring timely delivery and exceptional craftsmanship.',
       features: [
@@ -88,7 +89,9 @@ export default function Services() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="bg-white p-8 rounded-sm shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="text-6xl mb-6">{service.icon}</div>
+                <div className="mb-6 text-charcoal flex items-center justify-center">
+                  {service.icon}
+                </div>
                 <h2 className="font-display text-3xl font-bold text-charcoal mb-4">
                   {service.title}
                 </h2>

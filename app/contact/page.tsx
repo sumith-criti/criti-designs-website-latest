@@ -1,67 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { Instagram, Facebook, MessageSquare, Youtube } from 'lucide-react'
+import ContactForm from '@/components/ContactForm'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
-
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
-
-    // Simulate form submission
-    // In production, replace this with actual email.js or API call
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 5000)
-    }, 1500)
-
-    // Example EmailJS integration (uncomment and configure):
-    /*
-    try {
-      await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-        },
-        'YOUR_PUBLIC_KEY'
-      )
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-    } catch (error) {
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
-    }
-    */
-  }
 
   return (
     <div className="min-h-screen pt-20">
@@ -97,83 +42,9 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="bg-white p-8 rounded-sm shadow-sm"
+              className="bg-white p-8 rounded-lg shadow-md"
             >
-              <h2 className="font-display text-3xl font-bold text-charcoal mb-6">
-                Send Us a Message
-              </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-muted-gold focus:border-transparent transition-all"
-                    placeholder="Your Name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-muted-gold focus:border-transparent transition-all"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-muted-gold focus:border-transparent transition-all resize-none"
-                    placeholder="Tell us about your project..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-8 py-4 bg-charcoal text-white font-semibold rounded-sm hover:bg-charcoal/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-                {submitStatus === 'success' && (
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-green-600 text-sm text-center"
-                  >
-                    Thank you! Your message has been sent successfully.
-                  </motion.p>
-                )}
-                {submitStatus === 'error' && (
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-red-600 text-sm text-center"
-                  >
-                    Something went wrong. Please try again.
-                  </motion.p>
-                )}
-              </form>
+              <ContactForm />
             </motion.div>
 
             {/* Contact Information */}
@@ -228,37 +99,37 @@ export default function Contact() {
                         href="https://www.instagram.com/critidesigns/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-2xl hover:text-muted-gold transition-colors"
+                        className="text-muted-gold hover:text-primary transition-colors"
                         aria-label="Instagram"
                       >
-                        📷
+                        <Instagram className="w-6 h-6" strokeWidth={1.5} />
                       </a>
                       <a
                         href="https://www.facebook.com/critidesign"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-2xl hover:text-muted-gold transition-colors"
+                        className="text-muted-gold hover:text-primary transition-colors"
                         aria-label="Facebook"
                       >
-                        📘
+                        <Facebook className="w-6 h-6" strokeWidth={1.5} />
                       </a>
                       <a
                         href="https://wa.me/917306612105"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-2xl hover:text-muted-gold transition-colors"
+                        className="text-muted-gold hover:text-primary transition-colors"
                         aria-label="WhatsApp"
                       >
-                        💬
+                        <MessageSquare className="w-6 h-6" strokeWidth={1.5} />
                       </a>
                       <a
                         href="https://www.youtube.com/channel/UCFSPUEHSdpMsEgA7HUaEfaw"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-2xl hover:text-muted-gold transition-colors"
+                        className="text-muted-gold hover:text-primary transition-colors"
                         aria-label="YouTube"
                       >
-                        ▶️
+                        <Youtube className="w-6 h-6" strokeWidth={1.5} />
                       </a>
                     </div>
                   </div>

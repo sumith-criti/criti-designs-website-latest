@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { CheckCircle } from 'lucide-react'
 
 // This would typically come from a CMS or database
 const projectData: Record<string, {
@@ -273,7 +274,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 <ul className="space-y-4">
                   {project.highlights.map((highlight, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="text-muted-gold mr-3 mt-1">✓</span>
+                      <CheckCircle className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" strokeWidth={1.5} />
                       <span className="text-gray-600">{highlight}</span>
                     </li>
                   ))}

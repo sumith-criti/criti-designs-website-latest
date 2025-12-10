@@ -3,7 +3,10 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useInView } from "react-intersection-observer"
+import { DraftingCompass, Building, MessageSquare, Phone, Mail, MapPin, CheckCircle, BadgeCheck, FileCheck, Leaf, Ruler } from "lucide-react"
 import Testimonials from "@/components/Testimonials"
+import TrustBadges from "@/components/TrustBadges"
+import ContactForm from "@/components/ContactForm"
 
 export default function Home() {
   const scrollToContact = () => {
@@ -54,17 +57,17 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+            className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
-            Your Dream Home Begins Here
+            House Construction, Interiors & Architectural Design in Kannur
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-xl md:text-2xl text-gray-100 mb-8 font-body"
+            className="text-lg md:text-xl text-gray-100 mb-8 font-body max-w-3xl mx-auto"
           >
-            Architectural + Engineering Design & Build Packages
+            Complete turnkey construction, interior design, renovation, and architectural services. Serving Kannur, Payyannur, Taliparamba & surrounding areas with 10+ years of experience.
           </motion.p>
           <motion.button
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +76,7 @@ export default function Home() {
             onClick={scrollToContact}
             className="inline-block px-8 py-4 bg-primary text-white font-heading font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
-            Book Consultation
+            Get Free Consultation
           </motion.button>
         </motion.div>
 
@@ -90,95 +93,110 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Trust Badges Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <TrustBadges />
+        </div>
+      </section>
+
       {/* Featured Projects Section */}
-      <section className="py-20 bg-white">
-        <h2 className="text-4xl md:text-5xl font-semibold text-center mb-12 text-[#333333]" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
-          Featured Projects
-        </h2>
+      <section className="py-20 bg-background">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-12 text-[#333333] font-heading">
+            Featured Projects
+          </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto px-4">
-          {/* Project 1 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Project 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="relative h-64 group">
+                <Image
+                  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
+                  alt="Modern Residential Project"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-secondary mb-2 font-heading">Modern Residential</h3>
+                <p className="text-gray-600 font-body">Payyanur, Kerala</p>
+              </div>
+            </motion.div>
+
+            {/* Project 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="relative h-64 group">
+                <Image
+                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
+                  alt="Sustainable Home Design"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-secondary mb-2 font-heading">Sustainable Design</h3>
+                <p className="text-gray-600 font-body">Green Building Project</p>
+              </div>
+            </motion.div>
+
+            {/* Project 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="relative h-64 group">
+                <Image
+                  src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop"
+                  alt="Luxury Architecture"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-secondary mb-2 font-heading">Luxury Residence</h3>
+                <p className="text-gray-600 font-body">Contemporary Design</p>
+              </div>
+            </motion.div>
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex justify-center mt-12"
           >
-            <div className="relative group rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop" 
-                alt="Modern Residential Project"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <div>
-                  <h3 className="text-white text-lg font-semibold">Modern Residential</h3>
-                  <p className="text-gray-200 text-sm">Payyanur, Kerala</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Project 2 */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="relative group rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" 
-                alt="Sustainable Home Design"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <div>
-                  <h3 className="text-white text-lg font-semibold">Sustainable Design</h3>
-                  <p className="text-gray-200 text-sm">Green Building Project</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Project 3 */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div className="relative group rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop" 
-                alt="Luxury Architecture"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <div>
-                  <h3 className="text-white text-lg font-semibold">Luxury Residence</h3>
-                  <p className="text-gray-200 text-sm">Contemporary Design</p>
-                </div>
-              </div>
-            </div>
+            <a
+              href="/projects"
+              className="px-8 py-4 bg-[#A4C37D] text-white font-medium rounded-full hover:bg-[#7A9C5B] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              See More
+            </a>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex justify-center mt-12"
-        >
-          <a
-            href="/projects"
-            className="px-8 py-4 bg-[#A4C37D] text-white font-medium rounded-full hover:bg-[#7A9C5B] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            See More
-          </a>
-        </motion.div>
       </section>
 
       {/* 2️⃣ About Section */}
@@ -194,8 +212,10 @@ export default function Home() {
           {/* Icon Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12">
             <AnimatedCard delay={0.1}>
-              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-                <div className="text-5xl mb-4">🧠</div>
+              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center flex flex-col items-center">
+                <div className="mb-4 text-secondary flex items-center justify-center">
+                  <DraftingCompass className="w-10 h-10" strokeWidth={1.5} />
+                </div>
                 <h3 className="font-heading text-xl font-bold text-secondary mb-3">
                   Architect-first Planning
                 </h3>
@@ -206,8 +226,10 @@ export default function Home() {
             </AnimatedCard>
 
             <AnimatedCard delay={0.2}>
-              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-                <div className="text-5xl mb-4">🏗️</div>
+              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center flex flex-col items-center">
+                <div className="mb-4 text-secondary flex items-center justify-center">
+                  <Building className="w-10 h-10" strokeWidth={1.5} />
+                </div>
                 <h3 className="font-heading text-xl font-bold text-secondary mb-3">
                   Complete Design-to-Build Solutions
                 </h3>
@@ -218,8 +240,10 @@ export default function Home() {
             </AnimatedCard>
 
             <AnimatedCard delay={0.3}>
-              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-                <div className="text-5xl mb-4">💬</div>
+              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center flex flex-col items-center">
+                <div className="mb-4 text-secondary flex items-center justify-center">
+                  <MessageSquare className="w-10 h-10" strokeWidth={1.5} />
+                </div>
                 <h3 className="font-heading text-xl font-bold text-secondary mb-3">
                   Transparent & Personalized Support
                 </h3>
@@ -241,130 +265,47 @@ export default function Home() {
 
       {/* 4️⃣ Why Choose Us Section */}
       <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-4">
               Why Choose Us
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-body">
               What makes Criti Designs the most trusted architecture & design partner.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-            {/* Quality & Craftsmanship */}
-            <AnimatedCard delay={0.1}>
-              <div className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="mb-6">
-                  <svg
-                    className="w-12 h-12 text-[#A4C37D]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
-                  Quality & Craftsmanship
-                </h3>
-                <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                  We deliver thoughtful, high-quality design solutions with precision and attention to detail.
-                </p>
-              </div>
-            </AnimatedCard>
-
-            {/* Budget Transparency */}
-            <AnimatedCard delay={0.2}>
-              <div className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="mb-6">
-                  <svg
-                    className="w-12 h-12 text-[#A4C37D]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
-                  Budget Transparency
-                </h3>
-                <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                  No hidden costs. We plan every project with clarity and predictable outcomes.
-                </p>
-              </div>
-            </AnimatedCard>
-
-            {/* Sustainable Design */}
-            <AnimatedCard delay={0.3}>
-              <div className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="mb-6">
-                  <svg
-                    className="w-12 h-12 text-[#A4C37D]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
-                  Sustainable Design
-                </h3>
-                <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                  Eco-friendly materials and energy-efficient concepts integrated into every project.
-                </p>
-              </div>
-            </AnimatedCard>
-
-            {/* Smart Space Planning */}
-            <AnimatedCard delay={0.4}>
-              <div className="bg-white rounded-xl shadow-md p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="mb-6">
-                  <svg
-                    className="w-12 h-12 text-[#A4C37D]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-[#333333] mb-4" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
-                  Smart Space Planning
-                </h3>
-                <p className="text-gray-600 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                  Compact, functional, and elegant floor plans optimized for modern living.
-                </p>
-              </div>
-            </AnimatedCard>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <FeatureCard
+              icon={<BadgeCheck className="w-8 h-8" strokeWidth={1.5} />}
+              title="Quality & Craftsmanship"
+              description="We deliver thoughtful, high-quality design solutions with precision and attention to detail."
+              delay={0.1}
+            />
+            <FeatureCard
+              icon={<FileCheck className="w-8 h-8" strokeWidth={1.5} />}
+              title="Budget Transparency"
+              description="No hidden costs. We plan every project with clarity and predictable outcomes."
+              delay={0.2}
+            />
+            <FeatureCard
+              icon={<Leaf className="w-8 h-8" strokeWidth={1.5} />}
+              title="Sustainable Design"
+              description="Eco-friendly materials and energy-efficient concepts integrated into every project."
+              delay={0.3}
+            />
+            <FeatureCard
+              icon={<Ruler className="w-8 h-8" strokeWidth={1.5} />}
+              title="Smart Space Planning"
+              description="Compact, functional, and elegant floor plans optimized for modern living."
+              delay={0.4}
+            />
           </div>
         </div>
       </section>
@@ -379,56 +320,47 @@ export default function Home() {
             Let&apos;s Bring Your Vision to Life
           </h2>
           <p className="text-xl md:text-2xl text-gray-200 mb-12 text-center font-body max-w-3xl mx-auto">
-            Book a design consultation — online, at our office, or directly at your site.
+            Get a free consultation for your construction, interior design, or architectural project in Kannur.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto mb-12">
-            <ContactInfo
-              icon="📞"
-              label="Phone"
-              value="+91 73066 12105"
-              href="tel:+917306612105"
-              delay={0.1}
-            />
-            <ContactInfo
-              icon="📧"
-              label="Email"
-              value="info@critidesigns.com"
-              href="mailto:info@critidesigns.com"
-              delay={0.2}
-            />
-            <ContactInfo
-              icon="🌐"
-              label="Website"
-              value="www.critidesigns.com"
-              href="https://www.critidesigns.com"
-              delay={0.3}
-            />
-            <ContactInfo
-              icon="📍"
-              label="Location"
-              value="Payyanur, Kerala"
-              href="https://www.google.com/maps/place/CRITI/@12.1192767,75.1994739,16z/data=!3m1!4b1!4m6!3m5!1s0x3ba46d5dbb74b18d:0x2c8a17994fd4748f!8m2!3d12.1192767!4d75.1994739!16s%2Fg%2F11f7qyw08p?entry=ttu"
-              delay={0.4}
-            />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div>
+              <h3 className="font-heading text-2xl font-bold mb-6">Contact Information</h3>
+              <div className="space-y-6">
+                <ContactInfo
+                  icon={<Phone className="w-8 h-8" strokeWidth={1.5} />}
+                  label="Phone"
+                  value="+91 73066 12105"
+                  href="tel:+917306612105"
+                  delay={0.1}
+                />
+                <ContactInfo
+                  icon={<MessageSquare className="w-8 h-8" strokeWidth={1.5} />}
+                  label="WhatsApp"
+                  value="Chat Now"
+                  href="https://wa.me/917306612105"
+                  delay={0.2}
+                />
+                <ContactInfo
+                  icon={<Mail className="w-8 h-8" strokeWidth={1.5} />}
+                  label="Email"
+                  value="info@critidesigns.com"
+                  href="mailto:info@critidesigns.com"
+                  delay={0.3}
+                />
+                <ContactInfo
+                  icon={<MapPin className="w-8 h-8" strokeWidth={1.5} />}
+                  label="Location"
+                  value="Payyanur, Kerala"
+                  href="https://www.google.com/maps/place/CRITI/@12.1192767,75.1994739,16z/data=!3m1!4b1!4m6!3m5!1s0x3ba46d5dbb74b18d:0x2c8a17994fd4748f!8m2!3d12.1192767!4d75.1994739!16s%2Fg%2F11f7qyw08p?entry=ttu"
+                  delay={0.4}
+                />
+              </div>
+            </div>
+            <div className="bg-white/10 p-8 rounded-xl">
+              <ContactForm showTitle={true} />
+            </div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center"
-          >
-            <a
-              href="https://wa.me/917306612105"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-4 bg-primary text-white font-heading font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              Book Consultation
-            </a>
-          </motion.div>
 
           {/* Google Maps Embed */}
           <motion.div
@@ -551,10 +483,43 @@ function AnimatedCard({ children, delay = 0 }: { children: React.ReactNode, dela
   )
 }
 
-function ContactInfo({ icon, label, value, href, delay }: { icon: string, label: string, value: string, href?: string, delay: number }) {
+// Feature Card Component
+function FeatureCard({ 
+  icon, 
+  title, 
+  description, 
+  delay 
+}: { 
+  icon: React.ReactNode
+  title: string
+  description: string
+  delay: number
+}) {
+  return (
+    <AnimatedCard delay={delay}>
+      <div className="bg-white rounded-xl shadow-sm p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
+        <div className="w-14 h-14 flex items-center justify-center rounded-full bg-primary/10 mb-6">
+          <div className="text-primary">
+            {icon}
+          </div>
+        </div>
+        <h3 className="text-xl font-bold text-secondary mb-4 font-heading">
+          {title}
+        </h3>
+        <p className="text-gray-600 leading-relaxed font-body flex-grow">
+          {description}
+        </p>
+      </div>
+    </AnimatedCard>
+  )
+}
+
+function ContactInfo({ icon, label, value, href, delay }: { icon: React.ReactNode, label: string, value: string, href?: string, delay: number }) {
   const content = (
-    <div className="text-center">
-      <div className="text-4xl mb-3">{icon}</div>
+    <div className="text-center flex flex-col items-center">
+      <div className="mb-3 text-white flex items-center justify-center">
+        {icon}
+      </div>
       <div className="text-sm text-gray-300 mb-1 font-body">{label}</div>
       <div className="text-lg font-heading font-bold">{value}</div>
     </div>

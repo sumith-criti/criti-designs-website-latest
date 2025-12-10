@@ -3,6 +3,7 @@ import { Montserrat, Lato } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import StickyCTAs from '@/components/StickyCTAs'
 
 const montserrat = Montserrat({ 
   weight: ['700'],
@@ -19,14 +20,18 @@ const lato = Lato({
 })
 
 export const metadata: Metadata = {
-  title: 'Criti Designs | Architectural + Engineering Design & Build Packages',
-  description: 'Your Dream Home Begins Here. We design experiences that shape how you live, move, and feel. Architect-first approach with complete design-to-build solutions in Kerala, India.',
-  keywords: 'architecture, engineering, design and build, construction, turnkey projects, Kerala, India, architectural design, building construction',
-  authors: [{ name: 'Criti Designs' }],
+  title: 'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
+  description: 'Turnkey home construction, interior design, renovation, and architectural services in Kannur, Payyannur & Taliparamba. 10+ years experience. Get free consultation today.',
+  keywords: 'house construction kannur, interior design kannur, architectural design payyannur, home builders kannur, construction company kerala, renovation services kannur, 3d elevation design',
+  authors: [{ name: 'Criti Developers LLP' }],
   openGraph: {
-    title: 'Criti Designs | Architectural + Engineering Design & Build Packages',
-    description: 'Your Dream Home Begins Here. Architect-first approach with complete design-to-build solutions.',
+    title: 'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
+    description: 'Turnkey home construction, interior design, renovation, and architectural services in Kannur, Payyannur & Taliparamba. Get free consultation.',
     type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
@@ -43,6 +48,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <StickyCTAs />
       </body>
     </html>
   )
