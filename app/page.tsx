@@ -7,6 +7,7 @@ import { DraftingCompass, Building, MessageSquare, Phone, Mail, MapPin, CheckCir
 import Testimonials from "@/components/Testimonials"
 import TrustBadges from "@/components/TrustBadges"
 import ContactForm from "@/components/ContactForm"
+import Hero3DVilla from "@/components/Hero3DVilla"
 
 export default function Home() {
   // Animation variants
@@ -28,18 +29,9 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* 1️⃣ Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&h=1080&fit=crop"
-            alt="Modern Architecture"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-secondary/70"></div>
-        </div>
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-[#1a1a1a]">
+        {/* 3D Villa Background */}
+        <Hero3DVilla />
 
         {/* Hero Content */}
         <motion.div
@@ -388,7 +380,7 @@ export default function Home() {
             <p className="text-lg md:text-xl text-white/90 mb-8" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
               Let&apos;s design something beautiful, functional, and sustainable—together.
             </p>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -470,12 +462,12 @@ function AnimatedCard({ children, delay = 0 }: { children: React.ReactNode, dela
 }
 
 // Feature Card Component
-function FeatureCard({ 
-  icon, 
-  title, 
-  description, 
-  delay 
-}: { 
+function FeatureCard({
+  icon,
+  title,
+  description,
+  delay
+}: {
   icon: React.ReactNode
   title: string
   description: string
