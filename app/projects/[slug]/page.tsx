@@ -1,9 +1,10 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { use, useState, useEffect } from 'react'
 
 // This would typically come from a CMS or database
 const projectData: Record<string, {
@@ -16,6 +17,41 @@ const projectData: Record<string, {
   heroImage: string
   gallery: string[]
 }> = {
+  'edathavalam': {
+    title: 'Edathavalam',
+    location: 'Trikaripur, Kasargod',
+    year: '2024',
+    type: 'Residential',
+    description: 'Designed for Mr. Nizam, "Edathavalam" represents a harmonious blend of traditional architecture and modern living. Located in Trikaripur, Kasargod, this residence features open courtyards, abundant indoor greenery, and a warm, inviting atmosphere created through thoughtful lighting and material selection.',
+    highlights: [
+      'Client: Mr. Nizam',
+      'Traditional Kerala elements',
+      'Central courtyard with greenery',
+      'Warm ambient lighting',
+      'Indoor-outdoor living connection',
+      'Sustainable design approach',
+    ],
+    heroImage: '/images/projects/edathavalam/1.jpg',
+    gallery: [
+      '/images/projects/edathavalam/1.jpg',
+      '/images/projects/edathavalam/2.jpg',
+      '/images/projects/edathavalam/3.jpg',
+      '/images/projects/edathavalam/4.jpg',
+      '/images/projects/edathavalam/5.jpg',
+      '/images/projects/edathavalam/6.jpg',
+      '/images/projects/edathavalam/7.jpg',
+      '/images/projects/edathavalam/8.jpg',
+      '/images/projects/edathavalam/9.jpg',
+      '/images/projects/edathavalam/10.jpg',
+      '/images/projects/edathavalam/11.jpg',
+      '/images/projects/edathavalam/12.jpg',
+      '/images/projects/edathavalam/13.jpg',
+      '/images/projects/edathavalam/14.jpg',
+      '/images/projects/edathavalam/15.jpg',
+      '/images/projects/edathavalam/16.jpg',
+      '/images/projects/edathavalam/17.jpg',
+    ],
+  },
   'luxury-residential-complex': {
     title: 'Luxury Residential Complex',
     location: 'Mumbai, India',
@@ -191,9 +227,46 @@ const projectData: Record<string, {
   },
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export default function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
   const project = projectData[slug]
+
+  const handleNext = () => {
+    if (selectedImageIndex === null || !project) return
+    setSelectedImageIndex((prev) =>
+      prev === project.gallery.length - 1 ? 0 : (prev ?? 0) + 1
+    )
+  }
+
+  const handlePrev = () => {
+    if (selectedImageIndex === null || !project) return
+    setSelectedImageIndex((prev) =>
+      prev === 0 ? project.gallery.length - 1 : (prev ?? 0) - 1
+    )
+  }
+
+  useEffect(() => {
+    // Lock scroll when modal is open
+    if (selectedImageIndex !== null) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImageIndex === null) return
+      if (e.key === 'Escape') setSelectedImageIndex(null)
+      if (e.key === 'ArrowRight') handleNext()
+      if (e.key === 'ArrowLeft') handlePrev()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'unset'
+    }
+  }, [selectedImageIndex])
 
   if (!project) {
     return (
@@ -306,6 +379,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="relative aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer"
+                onClick={() => setSelectedImageIndex(index)}
               >
                 <Image
                   src={image}
@@ -313,6 +387,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <p className="text-white opacity-0 group-hover:opacity-100 font-medium tracking-wide transition-opacity">View Image</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -341,6 +418,67 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           </Link>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImageIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setSelectedImageIndex(null)
+            }}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImageIndex(null)}
+              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors p-2 z-50"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Left Prev Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); handlePrev() }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-4 z-50"
+            >
+              <ChevronLeft className="w-10 h-10" />
+            </button>
+
+            {/* Right Next Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); handleNext() }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-4 z-50"
+            >
+              <ChevronRight className="w-10 h-10" />
+            </button>
+
+            {/* Image Container */}
+            <motion.div
+              key={selectedImageIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-[90vw] h-[80vh]"
+            >
+              <Image
+                src={project.gallery[selectedImageIndex]}
+                alt={`Gallery Image ${selectedImageIndex + 1}`}
+                fill
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+
+            {/* Counter */}
+            <div className="absolute bottom-8 left-0 right-0 text-center text-white/70 font-display tracking-widest">
+              {selectedImageIndex + 1} / {project.gallery.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

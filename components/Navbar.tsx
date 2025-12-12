@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 
@@ -31,35 +32,42 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white shadow-lg text-[#333333]' 
-          : 'bg-white/90 backdrop-blur-md shadow-md'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white shadow-lg text-[#333333]'
+        : 'bg-white/90 backdrop-blur-md shadow-md'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-5">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="font-heading text-2xl font-bold text-[#333333] transition-colors group-hover:text-[#A4C37D]"
-            >
-              Criti Designs
-            </motion.div>
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/images/logo.png"
+                alt="Criti Developers Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className={`text-xl md:text-2xl font-heading font-bold leading-none ${isScrolled ? 'text-secondary' : 'text-secondary md:text-white'}`}>
+                criti
+              </span>
+              <span className={`text-[10px] md:text-xs tracking-[0.2em] uppercase ${isScrolled ? 'text-secondary/70' : 'text-secondary/70 md:text-white/80'}`}>
+                developers
+              </span>
+            </div>
           </Link>
-
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative group text-sm font-medium text-[#333333] transition-all duration-300 ${
-                  pathname === link.href ? 'text-[#A4C37D]' : ''
-                } hover:text-[#A4C37D] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#A4C37D] after:w-0 group-hover:after:w-full ${
-                  pathname === link.href ? 'after:w-full' : ''
-                }`}
+                className={`relative group text-sm font-medium text-[#333333] transition-all duration-300 ${pathname === link.href ? 'text-[#A4C37D]' : ''
+                  } hover:text-[#A4C37D] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#A4C37D] after:w-0 group-hover:after:w-full ${pathname === link.href ? 'after:w-full' : ''
+                  }`}
               >
                 {link.label}
               </Link>
@@ -106,11 +114,10 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-4 py-2 rounded-md text-base font-medium transition-colors ${
-                    pathname === link.href
-                      ? 'text-[#A4C37D] bg-[#A4C37D]/10'
-                      : 'text-[#333333] hover:text-[#A4C37D] hover:bg-gray-100'
-                  }`}
+                  className={`block px-4 py-2 rounded-md text-base font-medium transition-colors ${pathname === link.href
+                    ? 'text-[#A4C37D] bg-[#A4C37D]/10'
+                    : 'text-[#333333] hover:text-[#A4C37D] hover:bg-gray-100'
+                    }`}
                 >
                   {link.label}
                 </Link>

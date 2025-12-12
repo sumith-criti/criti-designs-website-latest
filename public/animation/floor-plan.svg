@@ -1,0 +1,29 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Kutyatoor Plan Interpretation -->
+  
+  <!-- Outer Walls (Thick) -->
+  <path d="M50 40 L250 40 L250 260 L50 260 Z" stroke="white" stroke-width="3" fill="none"/>
+  
+  <!-- Interior partitions -->
+  <!-- Vertical Divider (Central) -->
+  <path d="M120 40 L120 110" stroke="white" stroke-width="2" fill="none"/> 
+  <path d="M180 40 L180 110" stroke="white" stroke-width="2" fill="none"/>
+  
+  <!-- Horizontal Divider (Bedroom Line) -->
+  <path d="M50 110 L120 110 M180 110 L250 110" stroke="white" stroke-width="2" fill="none"/>
+  
+  <!-- Central Hall / Courtyard Area -->
+  <path d="M100 160 L200 160 M100 200 L200 200" stroke="white" stroke-width="1" stroke-dasharray="2 2" fill="none"/> <!-- Beams? -->
+
+  <!-- Bottom Rooms (Kitchen/Study) -->
+  <path d="M150 200 L150 260" stroke="white" stroke-width="2" fill="none"/>
+  <path d="M50 200 L150 200 L250 200" stroke="white" stroke-width="2" fill="none"/>
+
+  <!-- Doors -->
+  <!-- Top Left Room Door -->
+  <path d="M120 90 A 20 20 0 0 1 100 110" stroke="white" stroke-width="1" fill="none"/>
+  <!-- Top Right Room Door -->
+  <path d="M180 90 A 20 20 0 0 0 200 110" stroke="white" stroke-width="1" fill="none"/>
+  <!-- Main Entrance -->
+  <path d="M130 260 L130 280 M170 260 L170 280" stroke="white" stroke-width="1" fill="none"/>
+</svg>

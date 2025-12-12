@@ -1,0 +1,16 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top Left Bedroom Bed -->
+  <path d="M60 50 L100 50 L100 90 L60 90 Z" stroke="#a0a0a0" stroke-width="1.5" fill="none"/>
+  <!-- Top Right Bedroom Bed -->
+  <path d="M200 50 L240 50 L240 90 L200 90 Z" stroke="#a0a0a0" stroke-width="1.5" fill="none"/>
+  
+  <!-- Living Room Sofa (L Shape) -->
+  <path d="M60 130 L60 180 L100 180" stroke="#a0a0a0" stroke-width="1.5" fill="none"/>
+  <path d="M65 130 L65 175 L100 175" stroke="#a0a0a0" stroke-width="1" fill="none"/>
+  
+  <!-- Dining Table (Center Right) -->
+  <path d="M200 150 A 15 15 0 1 0 230 150 A 15 15 0 1 0 200 150" stroke="#a0a0a0" stroke-width="1.5" fill="none"/>
+  
+  <!-- Kitchen Counter (Bottom Left) -->
+  <path d="M55 205 L55 255 L100 255" stroke="#a0a0a0" stroke-width="1.5" fill="none"/>
+</svg>

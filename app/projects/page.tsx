@@ -10,6 +10,15 @@ export default function Projects() {
 
   const projects = [
     {
+      id: 10,
+      title: 'Edathavalam',
+      location: 'Trikaripur, Kasargod',
+      year: '2024',
+      type: 'Residential',
+      image: '/images/projects/edathavalam/1.jpg',
+      slug: 'edathavalam',
+    },
+    {
       id: 1,
       title: 'Luxury Residential Complex',
       location: 'Mumbai, India',
@@ -96,8 +105,8 @@ export default function Projects() {
 
   const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Mixed Use']
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
+  const filteredProjects = filter === 'All'
+    ? projects
     : projects.filter(project => project.type === filter)
 
   return (
@@ -132,11 +141,10 @@ export default function Projects() {
               <button
                 key={category}
                 onClick={() => setFilter(category)}
-                className={`px-6 py-2 rounded-sm font-medium transition-all duration-300 ${
-                  filter === category
+                className={`px-6 py-2 rounded-sm font-medium transition-all duration-300 ${filter === category
                     ? 'bg-charcoal text-white'
                     : 'bg-gray-100 text-charcoal hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {category}
               </button>

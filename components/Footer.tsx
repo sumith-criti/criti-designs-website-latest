@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function Footer() {
@@ -12,9 +13,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* 1. Brand Block */}
           <div className="lg:col-span-1">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 font-heading">
-              Criti Developers LLP
-            </h3>
+            <Link href="/" className="inline-block mb-6">
+              <div className="relative w-24 h-24">
+                <Image
+                  src="/images/logo.png"
+                  alt="Criti Developers Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </Link>
             <p className="text-[#FAFAF7]/80 text-sm md:text-base leading-relaxed font-body mb-4">
               House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience.
             </p>
@@ -83,8 +91,8 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link 
-                  href="/" 
+                <Link
+                  href="/"
                   className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300 text-sm md:text-base"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
@@ -92,8 +100,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/about" 
+                <Link
+                  href="/about"
                   className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300 text-sm md:text-base"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
@@ -101,8 +109,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/projects" 
+                <Link
+                  href="/projects"
                   className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300 text-sm md:text-base"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
@@ -110,8 +118,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/services" 
+                <Link
+                  href="/services"
                   className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300 text-sm md:text-base"
                   style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                 >
@@ -119,16 +127,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300 text-sm md:text-base font-body"
                 >
                   Contact
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/privacy-policy" 
+                <Link
+                  href="/privacy-policy"
                   className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300 text-sm md:text-base font-body"
                 >
                   Privacy Policy
@@ -144,23 +152,23 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm md:text-base font-body">
               <li>
-                <a 
-                  href="mailto:info@critidesigns.com" 
+                <a
+                  href="mailto:info@critidesigns.com"
                   className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300"
                 >
                   info@critidesigns.com
                 </a>
               </li>
               <li>
-                <a 
-                  href="tel:+917306612105" 
+                <a
+                  href="tel:+917306612105"
                   className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300"
                 >
                   +91 73066 12105
                 </a>
               </li>
               <li>
-                <a 
+                <a
                   href="https://wa.me/917306612105"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -173,7 +181,7 @@ export default function Footer() {
                 Payyanur, Kerala, India
               </li>
             </ul>
-            
+
             {/* Social Icons */}
             <div className="flex items-center gap-4 mt-6">
               <a
