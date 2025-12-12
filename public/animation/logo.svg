@@ -1,6 +1,0 @@
-<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-  <!-- C Logo Shape -->
-  <path d="M220 100 A 70 70 0 1 0 220 200" stroke="#00eaff" stroke-width="3" fill="none"/>
-  <!-- Leaf Details -->
-  <path d="M150 100 C 180 100, 200 80, 220 60" stroke="#00eaff" stroke-width="2" fill="none"/>
-</svg>
