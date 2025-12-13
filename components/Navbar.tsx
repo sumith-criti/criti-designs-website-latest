@@ -34,7 +34,7 @@ export default function Navbar() {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
         ? 'bg-white shadow-lg text-[#333333]'
-        : 'bg-white/90 backdrop-blur-md shadow-md'
+        : 'bg-white/30 backdrop-blur-md shadow-md'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,14 +49,6 @@ export default function Navbar() {
                 className="object-contain"
                 priority
               />
-            </div>
-            <div className="flex flex-col">
-              <span className={`text-xl md:text-2xl font-heading font-bold leading-none ${isScrolled ? 'text-secondary' : 'text-secondary md:text-white'}`}>
-                criti
-              </span>
-              <span className={`text-[10px] md:text-xs tracking-[0.2em] uppercase ${isScrolled ? 'text-secondary/70' : 'text-secondary/70 md:text-white/80'}`}>
-                developers
-              </span>
             </div>
           </Link>
           {/* Desktop Navigation */}
