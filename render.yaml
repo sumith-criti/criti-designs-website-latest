@@ -9,7 +9,8 @@ services:
       git lfs checkout
       npm install --include=dev
       npm run build
-    startCommand: npm run start
+    # Explicitly bind to Render-provided PORT
+    startCommand: npx next start -p $PORT
     envVars:
       - key: NEXT_TELEMETRY_DISABLED
         value: "1"
