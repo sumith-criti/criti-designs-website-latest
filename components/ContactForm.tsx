@@ -44,7 +44,7 @@ export default function ContactForm({ className = '', showTitle = true, compact 
       setIsSubmitting(false)
       setSubmitStatus('success')
       setFormData({ name: '', phone: '', requirement: '' })
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle')
@@ -61,7 +61,7 @@ export default function ContactForm({ className = '', showTitle = true, compact 
       )}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-secondary mb-2">
+          <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
             Name *
           </label>
           <input
@@ -76,7 +76,7 @@ export default function ContactForm({ className = '', showTitle = true, compact 
           />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-secondary mb-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
             Phone *
           </label>
           <input
@@ -87,11 +87,11 @@ export default function ContactForm({ className = '', showTitle = true, compact 
             onChange={handleChange}
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-            placeholder="+91 98765 43210"
+            placeholder="xxx-xxx-xxxx"
           />
         </div>
         <div>
-          <label htmlFor="requirement" className="block text-sm font-medium text-secondary mb-2">
+          <label htmlFor="requirement" className="block text-sm font-medium text-white mb-2">
             Requirement *
           </label>
           <textarea

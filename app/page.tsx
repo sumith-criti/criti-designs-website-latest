@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Image from "next/image"
+import Link from "next/link"
 import { DraftingCompass, Building, MessageSquare, Phone, Mail, MapPin, BadgeCheck, FileCheck, Leaf, Ruler } from "lucide-react"
 import Testimonials from "@/components/Testimonials"
 import TrustBadges from "@/components/TrustBadges"
@@ -161,14 +162,14 @@ export default function Home() {
 
 function ProjectCard({ src, title, location }: { src: string, title: string, location: string }) {
   return (
-    <div className="group cursor-pointer">
+    <Link href="/projects" className="group cursor-pointer block">
       <div className="relative h-80 rounded-2xl overflow-hidden mb-6 shadow-md transition-shadow hover:shadow-2xl">
         <Image src={src} alt={title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
       </div>
       <h3 className="text-2xl font-bold text-secondary mb-1 font-heading">{title}</h3>
       <p className="text-gray-500 font-body text-lg">{location}</p>
-    </div>
+    </Link>
   )
 }
 

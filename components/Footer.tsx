@@ -185,7 +185,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex items-center gap-4 mt-6">
               <a
-                href="https://www.instagram.com/critidesigns/"
+                href="https://www.instagram.com/critidevelopers/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#FAFAF7]/80 hover:text-[#A4C37D] transition-colors duration-300"

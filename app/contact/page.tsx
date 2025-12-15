@@ -96,7 +96,7 @@ export default function Contact() {
                     <h3 className="font-semibold text-lg text-charcoal mb-4">Follow Us</h3>
                     <div className="flex space-x-4">
                       <a
-                        href="https://www.instagram.com/critidesigns/"
+                        href="https://www.instagram.com/critidevelopers/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-muted-gold hover:text-primary transition-colors"

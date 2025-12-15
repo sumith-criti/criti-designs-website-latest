@@ -62,13 +62,16 @@ export default function HeroSection() {
         <section className="relative min-h-screen bg-[#1a1a1a] overflow-hidden">
             {/* Slideshow Container */}
             <div className="absolute inset-0 w-full h-full">
-                <AnimatePresence mode="wait">
+                <AnimatePresence initial={false}>
                     <motion.div
                         key={currentIndex}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 1.2, ease: 'easeInOut' }}
+                        transition={{
+                            duration: 1.5,
+                            ease: 'easeInOut'
+                        }}
                         className="absolute inset-0 w-full h-full"
                     >
                         <Image
@@ -108,11 +111,10 @@ export default function HeroSection() {
                     <button
                         key={index}
                         onClick={() => goToSlide(index)}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                            index === currentIndex
+                        className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
                                 ? 'w-8 bg-white'
                                 : 'w-2 bg-white/50 hover:bg-white/75'
-                        }`}
+                            }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}
