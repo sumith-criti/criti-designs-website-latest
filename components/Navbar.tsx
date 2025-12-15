@@ -41,12 +41,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between py-5">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative w-32 h-12 md:w-40 md:h-14 transition-transform duration-300 group-hover:scale-105">
               <Image
-                src="/images/logo.png"
-                alt="Criti Developers Logo"
+                src="/images/logo.svg"
+                alt="Criti Designs Logo"
                 fill
                 className="object-contain"
+                style={{ boxShadow: 'none' }}
                 priority
               />
             </div>

@@ -15,8 +15,31 @@ const projectData: Record<string, {
   description: string
   highlights: string[]
   heroImage: string
+  heroVideo?: string
   gallery: string[]
 }> = {
+  'marzook-residence': {
+    title: 'Marzook Residence',
+    location: 'Kunhimangalam',
+    year: '2024',
+    type: 'Residential',
+    description: 'A contemporary residence crafted for Marzook in Kunhimangalam, featuring warm finishes, abundant daylight, and a seamless connection between indoor living and landscaped outdoor areas.',
+    highlights: [
+      'Client: Marzook',
+      'Location: Kunhimangalam',
+      'Year: 2024',
+      'Residential project',
+      'Indoor-outdoor flow with natural light',
+    ],
+    heroImage: '/images/projects/marzook/0.png',
+    heroVideo: '/videos/projects/marzook/hero.mp4',
+    gallery: [
+      '/images/projects/marzook/0.png',
+      '/images/projects/marzook/1.png',
+      '/images/projects/marzook/2.png',
+      '/images/projects/marzook/3.png',
+    ],
+  },
   'edathavalam': {
     title: 'Edathavalam',
     location: 'Trikaripur, Kasargod',
@@ -50,6 +73,49 @@ const projectData: Record<string, {
       '/images/projects/edathavalam/15.jpg',
       '/images/projects/edathavalam/16.jpg',
       '/images/projects/edathavalam/17.jpg',
+    ],
+  },
+  'shafeer-vellur': {
+    title: 'Shafeer Residence',
+    location: 'Vellur',
+    year: '2022',
+    type: 'Residential',
+    description: 'A warm, wood-detailed family home crafted for Shafeer in Vellur. The interiors balance an airy layout with custom joinery, layered lighting, and a soft neutral palette. Open living, dining, and kitchen zones connect seamlessly, while built-ins and screens in rich timber add both storage and character.',
+    highlights: [
+      'Client: Shafeer',
+      'Completed: 2022',
+      'Location: Vellur',
+      'Open-plan living, dining, and breakfast counter',
+      'Warm timber staircase, screens, and built-ins',
+      'Neutral palette with soft layered lighting',
+    ],
+    heroImage: '/images/projects/shafeer-vellur/1.jpg',
+    gallery: [
+      '/images/projects/shafeer-vellur/1.jpg',
+      '/images/projects/shafeer-vellur/2.jpg',
+      '/images/projects/shafeer-vellur/3.jpg',
+      '/images/projects/shafeer-vellur/4.jpg',
+      '/images/projects/shafeer-vellur/5.jpg',
+      '/images/projects/shafeer-vellur/6.jpg',
+      '/images/projects/shafeer-vellur/7.jpg',
+      '/images/projects/shafeer-vellur/8.jpg',
+      '/images/projects/shafeer-vellur/9.jpg',
+      '/images/projects/shafeer-vellur/10.jpg',
+      '/images/projects/shafeer-vellur/11.jpg',
+      '/images/projects/shafeer-vellur/12.jpg',
+      '/images/projects/shafeer-vellur/13.jpg',
+      '/images/projects/shafeer-vellur/14.jpg',
+      '/images/projects/shafeer-vellur/15.jpg',
+      '/images/projects/shafeer-vellur/16.jpg',
+      '/images/projects/shafeer-vellur/17.jpg',
+      '/images/projects/shafeer-vellur/18.jpg',
+      '/images/projects/shafeer-vellur/19.jpg',
+      '/images/projects/shafeer-vellur/20.jpg',
+      '/images/projects/shafeer-vellur/21.jpg',
+      '/images/projects/shafeer-vellur/22.jpg',
+      '/images/projects/shafeer-vellur/23.jpg',
+      '/images/projects/shafeer-vellur/24.jpg',
+      '/images/projects/shafeer-vellur/25.jpg',
     ],
   },
   'luxury-residential-complex': {
@@ -285,13 +351,27 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
     <div className="min-h-screen pt-20">
       {/* Hero Image */}
       <section className="relative h-[70vh] overflow-hidden">
-        <Image
-          src={project.heroImage}
-          alt={project.title}
-          fill
-          className="object-cover"
-          priority
-        />
+        {project.heroVideo ? (
+          <video
+            poster={project.heroImage}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src={project.heroVideo} type="video/mp4" />
+          </video>
+        ) : (
+          <Image
+            src={project.heroImage}
+            alt={project.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent">
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
             <div className="max-w-7xl mx-auto">

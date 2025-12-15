@@ -10,6 +10,15 @@ export default function Projects() {
 
   const projects = [
     {
+      id: 12,
+      title: 'Marzook Residence',
+      location: 'Kunhimangalam',
+      year: '2024',
+      type: 'Residential',
+      image: '/images/projects/marzook/0.png',
+      slug: 'marzook-residence',
+    },
+    {
       id: 10,
       title: 'Edathavalam',
       location: 'Trikaripur, Kasargod',
@@ -17,6 +26,15 @@ export default function Projects() {
       type: 'Residential',
       image: '/images/projects/edathavalam/1.jpg',
       slug: 'edathavalam',
+    },
+    {
+      id: 11,
+      title: 'Shafeer Residence',
+      location: 'Vellur',
+      year: '2022',
+      type: 'Residential',
+      image: '/images/projects/shafeer-vellur/1.jpg',
+      slug: 'shafeer-vellur',
     },
     {
       id: 1,
