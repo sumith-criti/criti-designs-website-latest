@@ -5,14 +5,14 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import StickyCTAs from '@/components/StickyCTAs'
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   weight: ['700'],
   subsets: ['latin'],
   variable: '--font-montserrat',
   display: 'swap',
 })
 
-const lato = Lato({ 
+const lato = Lato({
   weight: ['400'],
   subsets: ['latin'],
   variable: '--font-lato',
@@ -21,12 +21,12 @@ const lato = Lato({
 
 export const metadata: Metadata = {
   title: 'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
-  description: 'Turnkey home construction, interior design, renovation, and architectural services in Kannur, Payyannur & Taliparamba. 10+ years experience. Get free consultation today.',
+  description: 'House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience. Professional home building and design services.',
   keywords: 'house construction kannur, interior design kannur, architectural design payyannur, home builders kannur, construction company kerala, renovation services kannur, 3d elevation design',
   authors: [{ name: 'Criti Developers LLP' }],
   openGraph: {
     title: 'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
-    description: 'Turnkey home construction, interior design, renovation, and architectural services in Kannur, Payyannur & Taliparamba. Get free consultation.',
+    description: 'House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience.',
     type: 'website',
   },
   robots: {

@@ -13,6 +13,7 @@ import HeroSection from "@/components/HeroSection"
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <h1 className="sr-only">House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience.</h1>
       {/* 1️⃣ Hero Section */}
       <HeroSection />
 

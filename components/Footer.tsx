@@ -23,9 +23,7 @@ export default function Footer() {
                 />
               </div>
             </Link>
-            <p className="text-[#FAFAF7]/80 text-sm md:text-base leading-relaxed font-body mb-4">
-              House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience.
-            </p>
+
             <div className="flex items-center gap-4 mt-4">
               <a
                 href="https://wa.me/917306612105"
