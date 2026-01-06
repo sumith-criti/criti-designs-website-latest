@@ -89,9 +89,9 @@ const projectData: Record<string, {
       'Warm timber staircase, screens, and built-ins',
       'Neutral palette with soft layered lighting',
     ],
-    heroImage: '/images/projects/shafeer-vellur/1.jpg',
+    heroImage: '/images/projects/shafeer-vellur/4.jpg',
     gallery: [
-      '/images/projects/shafeer-vellur/1.jpg',
+      // '/images/projects/shafeer-vellur/1.jpg',
       '/images/projects/shafeer-vellur/2.jpg',
       '/images/projects/shafeer-vellur/3.jpg',
       '/images/projects/shafeer-vellur/4.jpg',

@@ -33,7 +33,7 @@ export default function Projects() {
       location: 'Vellur',
       year: '2022',
       type: 'Residential',
-      image: '/images/projects/shafeer-vellur/1.jpg',
+      image: '/images/projects/shafeer-vellur/4.jpg',
       slug: 'shafeer-vellur',
     },
     {
@@ -160,8 +160,8 @@ export default function Projects() {
                 key={category}
                 onClick={() => setFilter(category)}
                 className={`px-6 py-2 rounded-sm font-medium transition-all duration-300 ${filter === category
-                    ? 'bg-charcoal text-white'
-                    : 'bg-gray-100 text-charcoal hover:bg-gray-200'
+                  ? 'bg-charcoal text-white'
+                  : 'bg-gray-100 text-charcoal hover:bg-gray-200'
                   }`}
               >
                 {category}
