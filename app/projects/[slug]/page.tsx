@@ -18,6 +18,29 @@ const projectData: Record<string, {
   heroVideo?: string
   gallery: string[]
 }> = {
+  'nizar-residence': {
+    title: 'Nizar Residence',
+    location: 'Payyannur',
+    year: '2025',
+    type: 'Residential',
+    description: 'A modern residential project designed for Mr. Nizar in Payyannur. This home features contemporary aesthetics combined with functional living spaces, optimized for comfort and style.',
+    highlights: [
+      'Client: Nizar',
+      'Location: Payyannur',
+      'Year: 2025',
+      'Residential project',
+      'Modern architectural design',
+    ],
+    heroImage: '/images/projects/nizar-residence/1.jpg',
+    gallery: [
+      '/images/projects/nizar-residence/1.jpg',
+      '/images/projects/nizar-residence/2.jpg',
+      '/images/projects/nizar-residence/3.jpg',
+      '/images/projects/nizar-residence/4.jpg',
+      '/images/projects/nizar-residence/5.jpg',
+      '/images/projects/nizar-residence/6.jpg',
+    ],
+  },
   'marzook-residence': {
     title: 'Marzook Residence',
     location: 'Kunhimangalam',

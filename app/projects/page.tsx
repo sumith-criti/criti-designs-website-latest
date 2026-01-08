@@ -10,6 +10,15 @@ export default function Projects() {
 
   const projects = [
     {
+      id: 13,
+      title: 'Nizar Residence',
+      location: 'Payyannur',
+      year: '2025',
+      type: 'Residential',
+      image: '/images/projects/nizar-residence/1.jpg',
+      slug: 'nizar-residence',
+    },
+    {
       id: 12,
       title: 'Marzook Residence',
       location: 'Kunhimangalam',
