@@ -226,7 +226,7 @@ export default function Footer() {
               Ready to start your project?
             </p>
             <Link
-              href="#contact"
+              href="/contact"
               className="inline-block bg-[#A4C37D] text-white font-semibold px-6 py-3 rounded-full hover:bg-[#7A9C5B] transition-colors duration-300 text-sm md:text-base"
               style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}
             >
