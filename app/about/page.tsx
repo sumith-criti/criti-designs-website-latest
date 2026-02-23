@@ -147,7 +147,7 @@ export default function About() {
           </motion.div>
 
           {/* Team Section */}
-          <motion.div
+          {/* <motion.div
             ref={ref3}
             initial={{ opacity: 0, y: 30 }}
             animate={inView3 ? { opacity: 1, y: 0 } : {}}
@@ -180,7 +180,7 @@ export default function About() {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
     </div>
