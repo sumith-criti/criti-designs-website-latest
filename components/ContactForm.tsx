@@ -38,18 +38,31 @@ export default function ContactForm({ className = '', showTitle = true, compact 
       requirement: formData.requirement,
     })
 
-    // Simulate form submission
-    // In production, replace this with actual API call
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+  
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to send message')
+      }
+  
       setSubmitStatus('success')
       setFormData({ name: '', phone: '', requirement: '' })
-
-      // Reset success message after 5 seconds
+  
       setTimeout(() => {
         setSubmitStatus('idle')
       }, 5000)
-    }, 1500)
+  
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
