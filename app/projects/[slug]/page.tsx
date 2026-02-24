@@ -18,6 +18,34 @@ const projectData: Record<string, {
   heroVideo?: string
   gallery: string[]
 }> = {
+  'munas-residence': {
+    title: 'Munas Residence',
+    location: 'Trikaripur, Kasargod',
+    year: '2025',
+    type: 'Residential',
+    description: 'A beautiful residential project crafted for Munas in Trikaripur, Kasargod, offering contemporary design and comfortable living spaces.',
+    highlights: [
+      'Client: Munas',
+      'Location: Trikaripur, Kasargod',
+      'Residential project',
+      'Contemporary design',
+    ],
+    heroImage: '/images/projects/munas/1.jpg',
+    gallery: [
+      '/images/projects/munas/1.jpg',
+      '/images/projects/munas/2.jpg',
+      '/images/projects/munas/3.jpg',
+      '/images/projects/munas/4.jpg',
+      '/images/projects/munas/5.jpg',
+      '/images/projects/munas/6.jpg',
+      '/images/projects/munas/7.jpg',
+      '/images/projects/munas/8.jpg',
+      '/images/projects/munas/9.jpg',
+      '/images/projects/munas/10.jpg',
+      '/images/projects/munas/11.jpg',
+      '/images/projects/munas/12.jpg',
+    ],
+  },
   'nizar-residence': {
     title: 'Nizar Residence',
     location: 'Payyannur',

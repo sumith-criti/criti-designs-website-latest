@@ -7,6 +7,15 @@ import { useState } from 'react'
 
 const projects_list = [
   {
+    id: 14,
+    title: 'Munas Residence',
+    location: 'Trikaripur, Kasargod',
+    year: '2025',
+    type: 'Residential',
+    image: '/images/projects/munas/1.jpg',
+    slug: 'munas-residence',
+  },
+  {
     id: 13,
     title: 'Nizar Residence',
     location: 'Payyannur',
