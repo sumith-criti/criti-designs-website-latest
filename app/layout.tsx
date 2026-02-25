@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Montserrat, Lato } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -49,6 +50,9 @@ export default function RootLayout({
         </main>
         <Footer />
         <StickyCTAs />
+        {process.env.NODE_ENV === 'production' && (
+          <GoogleAnalytics gaId="G-V29QZ3Y9ED" />
+        )}
       </body>
     </html>
   )
