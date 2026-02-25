@@ -43,7 +43,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${montserrat.variable} ${lato.variable} font-body antialiased bg-background`}>
+      <body suppressHydrationWarning className={`${montserrat.variable} ${lato.variable} font-body antialiased bg-background`}>
         <Navbar />
         <main className="min-h-screen">
           {children}

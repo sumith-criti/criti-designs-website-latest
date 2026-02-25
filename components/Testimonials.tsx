@@ -15,28 +15,46 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Arun M.',
-    location: 'Kochi',
+    name: 'Abdul Azeez',
+    location: 'Pallikkara',
     type: 'Residential Client',
-    text: 'Criti Designs perfectly balanced elegance and practicality in our home. Every space feels both luxurious and natural.'
+    text: 'Thank you for building our beautiful home. We look forward to creating many wonderful memories here. Truly grateful once again.'
   },
   {
-    name: 'Sajna & Rahul',
-    location: 'Calicut',
+    name: 'Shamz KV',
+    location: 'Pilathara',
     type: 'Residential Client',
-    text: 'Their compact home design philosophy changed our perspective on modern living. Excellent detailing and professionalism.'
+    text: 'I’m extremely impressed with the quality of work and service. I will gladly recommend your team to anyone looking for reliable professionals.'
   },
   {
-    name: 'TechSpace HQ',
-    location: 'Trivandrum',
-    type: 'Commercial Client',
-    text: 'From concept to completion, their communication and execution were top-notch. The office turned out better than imagined.'
+    name: 'Professor',
+    location: 'Cherthala',
+    type: 'Residential Client',
+    text: 'Everyone who visited loved the house and said it feels like a resort. They appreciated the unique design and thoughtful planning. Many guests who came for the pooja even recorded videos of the home. Thank you so much.'
   },
   {
-    name: 'Neha Joseph',
-    location: 'Kannur',
+    name: 'Sameer',
+    location: 'Trikaripur',
     type: 'Residential Client',
-    text: 'Working with Criti Designs was a seamless experience. They understood our vision and brought it to life with incredible attention to detail.'
+    text: 'Despite the limited space, all our requirements were incorporated beautifully through smart planning. We loved the design from the very first look'
+  },
+  {
+    name: 'Abdul Wajid',
+    location: 'Kavvayi',
+    type: 'Residential Client',
+    text: 'We are very satisfied with the structural planning and execution. The design was explained clearly, and our requirements were carefully considered. The structure feels safe, practical, and well engineered.'
+  },
+  {
+    name: 'Nizam',
+    location: 'Trikaripur',
+    type: 'Residential Client',
+    text: 'We wanted an eco-friendly, sustainable home, and our vision was fully supported by the team. Their young and dedicated architects and engineers guided us throughout the process, and the house was completed within 7 months. We especially valued the open discussions at every stage and the fact that the project stayed within our planned budget. Thank you for the excellent support.'
+  },
+  {
+    name: 'Niyaz',
+    location: 'Trikaripur',
+    type: 'Residential Client',
+    text: 'Before building our home, we explored many design options. With limited space, our goal was maximum utilization, which initially seemed challenging. The final design perfectly matched our needs and truly brought our dream home to life. The look and feel are unique, and every corner has its own character. Thank you for everything.'
   }
 ]
 
