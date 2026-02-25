@@ -167,7 +167,7 @@ export default function Testimonials() {
                     </div>
 
                     {/* Star Rating */}
-                    <StarRating />
+                    {/* <StarRating /> */}
 
                     {/* Testimonial Text */}
                     <p className="text-[#333333] leading-relaxed flex-grow" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
