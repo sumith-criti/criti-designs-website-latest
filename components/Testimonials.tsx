@@ -27,7 +27,7 @@ const testimonials: Testimonial[] = [
     text: 'I’m extremely impressed with the quality of work and service. I will gladly recommend your team to anyone looking for reliable professionals.'
   },
   {
-    name: 'Professor',
+    name: 'Aju Aravind',
     location: 'Cherthala',
     type: 'Residential Client',
     text: 'Everyone who visited loved the house and said it feels like a resort. They appreciated the unique design and thoughtful planning. Many guests who came for the pooja even recorded videos of the home. Thank you so much.'
