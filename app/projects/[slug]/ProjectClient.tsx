@@ -82,9 +82,11 @@ export default function ProjectClient({ project }: { project: Project }) {
                 <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">
                   {project.title}
                 </h1>
-                <p className="text-xl text-gray-200">
-                  {project.location} • {project.year}
-                </p>
+                {project.type !== '3D' && (project.location || project.year) && (
+                  <p className="text-xl text-gray-200">
+                    {project.location} • {project.year}
+                  </p>
+                )}
               </motion.div>
             </div>
           </div>

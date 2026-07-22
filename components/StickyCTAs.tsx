@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { trackEvent } from '@/lib/analytics'
+import { usePathname } from 'next/navigation'
 
 const WHATSAPP_NUMBER = '917306612105'
 const PHONE_NUMBER = '+917306612105'
 
 export default function StickyCTAs() {
+  const pathname = usePathname()
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -17,6 +19,11 @@ export default function StickyCTAs() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  if (pathname?.startsWith('/admin') || pathname?.startsWith('/auth')) {
+    return null
+  }
+
 
   const handleWhatsAppClick = () => {
     trackEvent('whatsapp_button_clicked', {

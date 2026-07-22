@@ -19,11 +19,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  if (pathname?.startsWith('/admin') || pathname?.startsWith('/auth')) {
+    return null
+  }
+
+
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/projects', label: 'Projects' },
     { href: '/services', label: 'Services' },
+    { href: '/blog', label: 'Blogs' },
     { href: '/contact', label: 'Contact' },
   ]
 
@@ -44,7 +50,7 @@ export default function Navbar() {
             <div className="relative w-32 h-12 md:w-40 md:h-14 transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/images/logo.svg"
-                alt="Criti Designs Logo"
+                alt="Criti Developers Logo"
                 fill
                 className="object-contain"
                 style={{ boxShadow: 'none' }}

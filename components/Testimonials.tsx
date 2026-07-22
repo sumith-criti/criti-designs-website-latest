@@ -134,7 +134,7 @@ export default function Testimonials() {
               What Our Clients Say
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-4" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-              Hear from homeowners and businesses who trusted Criti Designs with their dream spaces.
+              Hear from homeowners and businesses who trusted Criti Developers with their dream spaces.
             </p>
           </div>
 
