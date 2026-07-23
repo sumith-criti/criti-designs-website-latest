@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getBlogBySlug, getBlogs } from '@/lib/db';
 
-// export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
