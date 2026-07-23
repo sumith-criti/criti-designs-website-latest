@@ -109,7 +109,7 @@ export default function NewBlogPage() {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex items-center gap-4">
         <Link
-          href="/admin/blogs"
+          href="/admin"
           className="p-2 bg-white hover:bg-gray-100 border rounded-lg transition-colors text-gray-600"
         >
           <ArrowLeft className="w-5 h-5" />
@@ -124,7 +124,7 @@ export default function NewBlogPage() {
         {/* Core details */}
         <div className="bg-white border rounded-xl p-6 shadow-sm space-y-4">
           <h2 className="text-lg font-semibold text-gray-900 border-b pb-2">Article Details</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Blog Name *</label>
@@ -283,7 +283,7 @@ export default function NewBlogPage() {
         {/* Action Buttons */}
         <div className="flex justify-end gap-4">
           <Link
-            href="/admin/blogs"
+            href="/admin"
             className="px-4 py-2 border rounded-lg text-gray-700 hover:bg-gray-100 bg-white font-medium transition-colors"
           >
             Cancel

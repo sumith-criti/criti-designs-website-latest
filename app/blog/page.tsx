@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { getBlogs } from '@/lib/db';
 import BlogListClient from './BlogListClient';
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Blog | Criti Developers',
