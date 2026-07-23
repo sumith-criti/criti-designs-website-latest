@@ -5,6 +5,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import StickyCTAs from '@/components/StickyCTAs'
+import Providers from './providers'
 
 const montserrat = Montserrat({
   weight: ['700'],
@@ -21,6 +22,7 @@ const lato = Lato({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.critidevelopers.com'),
   title: 'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
   description: 'House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience. Professional home building and design services.',
   keywords: 'house construction kannur, interior design kannur, architectural design payyannur, home builders kannur, construction company kerala, renovation services kannur, 3d elevation design',
@@ -44,15 +46,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body suppressHydrationWarning className={`${montserrat.variable} ${lato.variable} font-body antialiased bg-background`}>
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
-        <StickyCTAs />
-        {process.env.NODE_ENV === 'production' && (
-          <GoogleAnalytics gaId="G-V29QZ3Y9ED" />
-        )}
+        <Providers>
+          <Navbar />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+          <StickyCTAs />
+          {process.env.NODE_ENV === 'production' && (
+            <GoogleAnalytics gaId="G-V29QZ3Y9ED" />
+          )}
+        </Providers>
       </body>
     </html>
   )

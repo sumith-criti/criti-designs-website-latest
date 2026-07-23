@@ -24,7 +24,6 @@ const nextConfig = {
     ],
     unoptimized: true, // for netlify
   },
-  output: 'export',
   // Performance optimizations
   compress: true,
   poweredByHeader: false,

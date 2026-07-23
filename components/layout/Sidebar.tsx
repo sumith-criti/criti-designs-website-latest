@@ -3,19 +3,19 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  LogOut
+  LogOut,
+  LayoutDashboard,
+  BookOpen,
+  FileText,
+  PlusCircle
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { signOut } from 'next-auth/react'
 
-// Invoice section disabled
 const navigation: Array<{ name: string; href: string; icon: any }> = [
-  // { name: 'Dashboard', href: '/invoices/dashboard', icon: LayoutDashboard },
-  // { name: 'Invoices', href: '/invoices', icon: FileText },
-  // { name: 'Clients', href: '/invoices/clients', icon: Users },
-  // { name: 'Items', href: '/invoices/items', icon: Package },
-  // { name: 'Templates', href: '/invoices/templates', icon: Receipt },
-  // { name: 'Settings', href: '/invoices/settings', icon: Settings }
+  { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+  { name: 'Manage Blogs', href: '/admin/blogs', icon: FileText },
+  { name: 'Add New Blog', href: '/admin/new', icon: PlusCircle }
 ]
 
 export default function Sidebar() {
@@ -24,11 +24,13 @@ export default function Sidebar() {
   return (
     <div className="flex flex-col w-64 bg-gray-900 text-white min-h-screen">
       <div className="flex items-center justify-center h-16 px-4 border-b border-gray-800">
-        <h1 className="text-xl font-bold">Criti Designs</h1>
+        <h1 className="text-xl font-bold">Criti Developers</h1>
       </div>
       <nav className="flex-1 px-4 py-6 space-y-1">
         {navigation.map((item) => {
-          const isActive = pathname === item.href || pathname?.startsWith(item.href + '/')
+          const isActive = item.href === '/admin'
+            ? pathname === '/admin'
+            : pathname === item.href || pathname?.startsWith(item.href + '/')
           return (
             <Link
               key={item.name}

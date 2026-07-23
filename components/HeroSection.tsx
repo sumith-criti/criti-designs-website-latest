@@ -7,20 +7,24 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const heroImages = [
     {
-        src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&h=1080&fit=crop&q=90',
-        alt: 'Modern Architecture',
+        src: '/images/home/1.jpg',
+        alt: 'Modern Architecture Design by Criti Developers',
     },
     {
-        src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=90',
-        alt: 'Contemporary Design',
+        src: '/images/home/2.jpg',
+        alt: 'Contemporary Interior Execution by Criti Developers',
     },
     {
-        src: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&h=1080&fit=crop&q=90',
-        alt: 'Luxury Residence',
+        src: '/images/home/3.jpg',
+        alt: 'Turnkey Luxury Residence Construction',
     },
     {
-        src: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1920&h=1080&fit=crop&q=90',
-        alt: 'Sustainable Architecture',
+        src: '/images/home/4.png',
+        alt: 'Architectural Planning & 3D Elevation',
+    },
+    {
+        src: '/images/home/5.jpg',
+        alt: 'Sustainable Home Building Projects',
     },
 ]
 
