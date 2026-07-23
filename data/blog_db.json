@@ -12,33 +12,5 @@
     "date": "2026-07-17",
     "createdAt": "2026-07-17T10:26:52.776Z",
     "isActive": true
-  },
-  {
-    "id": 2,
-    "slug": "abc",
-    "name": "ABC",
-    "image": "/uploads/blogs/1784608970296-6pau11.png",
-    "imageAlt": "abc",
-    "description": "<h2>Abnm,&nbsp;<br>&nbsp;</h2><h2>GHJkfe<strong> gedhjk gjevwhekdbqlk</strong><i> hjhkqwslq</i></h2>",
-    "seoTitle": "ABC",
-    "metaDescription": "jhbnje",
-    "metaKeywords": "jhk, hjfkedl, jhkjl",
-    "date": "2026-07-21",
-    "isActive": true,
-    "createdAt": "2026-07-21T04:42:50.301Z"
-  },
-  {
-    "id": 3,
-    "slug": "hjhkf",
-    "name": "hjhkf",
-    "image": "/uploads/blogs/1784609083981-6l9z31.png",
-    "imageAlt": "jhfbej3",
-    "description": "<p>vcbdjkslk</p>",
-    "seoTitle": "hjhkf",
-    "metaDescription": " nbnd",
-    "metaKeywords": "mm,",
-    "date": "2026-07-21",
-    "isActive": true,
-    "createdAt": "2026-07-21T04:44:44.015Z"
   }
 ]
