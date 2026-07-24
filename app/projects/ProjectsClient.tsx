@@ -138,7 +138,7 @@ const projects_list = [
     location: '',
     year: '',
     type: '3D',
-    image: '/images/3d/1.png',
+    image: '/images/3d/1.webp',
     slug: '3d-elevation-designs',
   },
 ]
