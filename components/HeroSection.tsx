@@ -7,23 +7,23 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const heroImages = [
     {
-        src: '/images/home/1.jpg',
+        src: '/images/home/1.webp',
         alt: 'Modern Architecture Design by Criti Developers',
     },
     {
-        src: '/images/home/2.jpg',
+        src: '/images/home/2.webp',
         alt: 'Contemporary Interior Execution by Criti Developers',
     },
     {
-        src: '/images/home/3.jpg',
+        src: '/images/home/3.webp',
         alt: 'Turnkey Luxury Residence Construction',
     },
     {
-        src: '/images/home/4.png',
+        src: '/images/home/4.webp',
         alt: 'Architectural Planning & 3D Elevation',
     },
     {
-        src: '/images/home/5.jpg',
+        src: '/images/home/5.webp',
         alt: 'Sustainable Home Building Projects',
     },
 ]
