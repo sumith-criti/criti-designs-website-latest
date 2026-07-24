@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../../auth/[...nextauth]/route';
 import { createBlog, deleteBlog, updateBlog } from '@/lib/db';
@@ -71,6 +72,10 @@ export async function POST(req: NextRequest) {
       date
     });
 
+    revalidatePath('/blog');
+    revalidatePath(`/blog/${slug}`);
+    revalidatePath('/admin/blogs');
+
     return NextResponse.json(newBlog, { status: 201 });
   } catch (error: any) {
     console.error('Error in creating blog:', error);
@@ -96,6 +101,9 @@ export async function DELETE(req: NextRequest) {
     if (!success) {
       return NextResponse.json({ error: 'Blog not found or already deleted' }, { status: 404 });
     }
+
+    revalidatePath('/blog');
+    revalidatePath('/admin/blogs');
 
     return NextResponse.json({ message: 'Blog deleted successfully' });
   } catch (error: any) {
@@ -131,6 +139,9 @@ export async function PUT(req: NextRequest) {
       if (!updatedBlog) {
         return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
       }
+      revalidatePath('/blog');
+      revalidatePath(`/blog/${updatedBlog.slug}`);
+      revalidatePath('/admin/blogs');
       return NextResponse.json(updatedBlog);
     }
     
@@ -192,6 +203,10 @@ export async function PUT(req: NextRequest) {
     if (!updatedBlog) {
       return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
     }
+
+    revalidatePath('/blog');
+    revalidatePath(`/blog/${slug}`);
+    revalidatePath('/admin/blogs');
 
     return NextResponse.json(updatedBlog);
   } catch (error: any) {
