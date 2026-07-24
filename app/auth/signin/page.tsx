@@ -66,7 +66,7 @@ export default function SignInPage() {
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@critidesigns.com"
+                placeholder="Email"
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A4C37D] focus:border-transparent text-gray-800 bg-white placeholder:text-gray-400 transition-all"
               />
             </div>
@@ -82,7 +82,7 @@ export default function SignInPage() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="Password"
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A4C37D] focus:border-transparent text-gray-800 bg-white placeholder:text-gray-400 transition-all"
               />
             </div>
