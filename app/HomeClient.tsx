@@ -34,19 +34,19 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 */}
             <ProjectCard
-              src="/images/projects/munas/1.jpg"
+              src="/images/projects/munas/1.webp"
               title="Munas Residence"
               location="Trikaripur, Kasargod"
             />
             {/* Project 2 */}
             <ProjectCard
-              src="/images/projects/nizar-residence/1.jpg"
+              src="/images/projects/nizar-residence/1.webp"
               title="Nizar Residence"
               location="Payyannur, Kerala"
             />
             {/* Project 3 */}
             <ProjectCard
-              src="/images/projects/marzook/0.png"
+              src="/images/projects/marzook/0.webp"
               title="Marzook Residence"
               location="Kunhimangalam, Kerala"
             />

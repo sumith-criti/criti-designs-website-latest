@@ -18,8 +18,8 @@ let useJsonFallback = false;
 
 // Try to initialize better-sqlite3
 try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const Database = require('better-sqlite3');
+  const req = eval('require');
+  const Database = req('better-sqlite3');
   sqliteDb = new Database(DB_FILE);
   // Create tables if they do not exist
   sqliteDb.exec(`
