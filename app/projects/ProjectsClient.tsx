@@ -12,7 +12,7 @@ const projects_list = [
     location: 'Trikaripur, Kasargod',
     year: '2025',
     type: 'Residential',
-    image: '/images/projects/munas/1.jpg',
+    image: '/images/projects/munas/1.webp',
     slug: 'munas-residence',
   },
   {
@@ -21,7 +21,7 @@ const projects_list = [
     location: 'Payyannur',
     year: '2025',
     type: 'Residential',
-    image: '/images/projects/nizar-residence/1.jpg',
+    image: '/images/projects/nizar-residence/1.webp',
     slug: 'nizar-residence',
   },
   {
@@ -30,7 +30,7 @@ const projects_list = [
     location: 'Kunhimangalam',
     year: '2024',
     type: 'Residential',
-    image: '/images/projects/marzook/0.png',
+    image: '/images/projects/marzook/0.webp',
     slug: 'marzook-residence',
   },
   {
@@ -39,7 +39,7 @@ const projects_list = [
     location: 'Trikaripur, Kasargod',
     year: '2024',
     type: 'Residential',
-    image: '/images/projects/edathavalam/1.jpg',
+    image: '/images/projects/edathavalam/1.webp',
     slug: 'edathavalam',
   },
   {
@@ -48,7 +48,7 @@ const projects_list = [
     location: 'Vellur',
     year: '2022',
     type: 'Residential',
-    image: '/images/projects/shafeer-vellur/4.jpg',
+    image: '/images/projects/shafeer-vellur/4.webp',
     slug: 'shafeer-vellur',
   },
   // {
