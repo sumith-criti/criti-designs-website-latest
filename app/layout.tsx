@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Montserrat, Lato } from 'next/font/google'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -54,7 +54,20 @@ export default function RootLayout({
           <Footer />
           <StickyCTAs />
           {process.env.NODE_ENV === 'production' && (
-            <GoogleAnalytics gaId="G-V29QZ3Y9ED" />
+            <>
+              <Script
+                src="https://www.googletagmanager.com/gtag/js?id=G-V29QZ3Y9ED"
+                strategy="lazyOnload"
+              />
+              <Script id="google-analytics" strategy="lazyOnload">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-V29QZ3Y9ED');
+                `}
+              </Script>
+            </>
           )}
         </Providers>
       </body>
