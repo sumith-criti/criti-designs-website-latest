@@ -37,19 +37,12 @@ async function cleanupUnusedBlogImage(imagePath: string, currentBlogId?: number)
 }
 
 /**
- * Generates a clean filename preserving the original uploaded file name.
- * Sanitizes special characters/spaces while preventing unintended file collisions.
+ * Generates a clean filename based on the blog slug.
+ * Prevents unintended file collisions.
  */
-function getSafeOriginalFileName(originalName: string, uploadDir: string): string {
+function getSafeFileName(originalName: string, blogSlug: string, uploadDir: string): string {
   const ext = path.extname(originalName) || '.jpg';
-  const nameWithoutExt = path.basename(originalName, ext);
-
-  // Sanitize filename for web safety (replace spaces/special characters with hyphens)
-  const sanitizedBase = nameWithoutExt
-    .toLowerCase()
-    .replace(/[^a-z0-9._-]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/(^-|-$)+/g, '') || 'image';
+  const sanitizedBase = blogSlug || 'blog-image';
 
   let fileName = `${sanitizedBase}${ext}`;
   let filePath = path.join(uploadDir, fileName);
@@ -89,9 +82,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Name, Description, and Date are required.' }, { status: 400 });
     }
 
+    // 3. Generate Slug (used for both DB and image filename)
+    const slug = slugInput || name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
     let imagePath = '';
 
-    // 3. Handle File Upload
+    // 4. Handle File Upload
     if (imageFile && imageFile.size > 0) {
       const bytes = await imageFile.arrayBuffer();
       const buffer = Buffer.from(bytes);
@@ -102,8 +98,8 @@ export async function POST(req: NextRequest) {
         fs.mkdirSync(uploadDir, { recursive: true });
       }
 
-      // Preserve original uploaded file name (sanitized for web safety)
-      const fileName = getSafeOriginalFileName(imageFile.name, uploadDir);
+      // Use the slug for the image file name
+      const fileName = getSafeFileName(imageFile.name, slug, uploadDir);
       const filePath = path.join(uploadDir, fileName);
 
       fs.writeFileSync(filePath, buffer);
@@ -113,9 +109,6 @@ export async function POST(req: NextRequest) {
       const imageUrl = formData.get('imageUrl') as string;
       imagePath = imageUrl || '/images/default-blog.jpg';
     }
-
-    // 4. Generate Slug if not provided
-    const slug = slugInput || name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
     // 5. Create in Database
     const newBlog = await createBlog({
@@ -235,6 +228,7 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ error: 'Name, Description, and Date are required.' }, { status: 400 });
     }
 
+    const slug = slugInput || name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
     let imagePath = formData.get('imageUrl') as string || '';
 
     // Handle File Upload if there's a new image file
@@ -247,15 +241,13 @@ export async function PUT(req: NextRequest) {
         fs.mkdirSync(uploadDir, { recursive: true });
       }
 
-      // Preserve original uploaded file name (sanitized for web safety)
-      const fileName = getSafeOriginalFileName(imageFile.name, uploadDir);
+      // Use the slug for the image file name
+      const fileName = getSafeFileName(imageFile.name, slug, uploadDir);
       const filePath = path.join(uploadDir, fileName);
 
       fs.writeFileSync(filePath, buffer);
       imagePath = `/uploads/blogs/${fileName}`;
     }
-
-    const slug = slugInput || name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
     const updateData: any = {
       slug,
