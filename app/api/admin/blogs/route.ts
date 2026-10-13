@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../auth/[...nextauth]/route';
+import { authOptions } from '@/lib/auth';
 import { createBlog, deleteBlog, updateBlog, getBlogById, getBlogs } from '@/lib/db';
 import fs from 'fs';
 import path from 'path';

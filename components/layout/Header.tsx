@@ -6,10 +6,7 @@ export default function Header() {
   const { data: session } = useSession()
 
   return (
-    <header className="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-6">
-      <div className="flex items-center">
-        <h2 className="text-lg font-semibold text-gray-900">Admin Dashboard</h2>
-      </div>
+    <header className="bg-white border-b border-gray-200 h-16 flex items-center justify-end px-6">
       <div className="flex items-center space-x-4">
         <div className="text-sm text-gray-600">
           <span className="font-medium">{session?.user?.name}</span>
