@@ -27,7 +27,9 @@ export default function SignInPage() {
         toast.error('Invalid email or password')
       } else {
         toast.success('Signed in successfully')
-        router.push('/admin')
+        const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null
+        const callbackUrl = params?.get('callbackUrl') || '/admin'
+        router.push(callbackUrl)
         router.refresh()
       }
     } catch (error) {
