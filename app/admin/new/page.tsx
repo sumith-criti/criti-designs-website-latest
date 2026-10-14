@@ -29,11 +29,31 @@ export default function NewBlogPage() {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('Image size must be less than 5MB');
+        return;
+      }
       setImageFile(file);
       setImagePreview(URL.createObjectURL(file));
       if (!imageAlt) {
         setImageAlt(file.name.split('.')[0].replace(/[-_]+/g, ' '));
       }
+    }
+  };
+
+  const handleClearImage = () => {
+    setImageFile(null);
+    setImageUrl('');
+    setImagePreview(null);
+    const input = document.getElementById('new-image-file-input') as HTMLInputElement | null;
+    if (input) input.value = '';
+  };
+
+  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setImageUrl(val);
+    if (!imageFile) {
+      setImagePreview(val || null);
     }
   };
 
@@ -177,59 +197,92 @@ export default function NewBlogPage() {
           </div>
 
           {/* Image Upload Area */}
-          <div className="space-y-2">
+          <div className="space-y-3">
             <label className="block text-sm font-medium text-gray-700">Cover Image *</label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* File upload */}
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-blue-500 transition-colors relative bg-gray-50">
+              {/* File upload card */}
+              <div className="flex flex-col justify-between border-2 border-dashed border-gray-300 hover:border-[#A4C37D] rounded-xl p-5 bg-gray-50/70 transition-all text-center">
                 <input
                   type="file"
+                  id="new-image-file-input"
                   accept="image/*"
                   onChange={handleImageChange}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  className="hidden"
                 />
-                <Upload className="w-8 h-8 text-gray-400 mb-2" />
-                <p className="text-sm font-medium text-gray-700">Click to upload file</p>
-                <p className="text-xs text-gray-500 mt-1">PNG, JPG, WEBP (Max 5MB)</p>
+                <label
+                  htmlFor="new-image-file-input"
+                  className="cursor-pointer flex flex-col items-center justify-center flex-grow py-3"
+                >
+                  <div className="p-3 bg-white rounded-full shadow-sm border border-gray-100 text-gray-500 mb-2">
+                    <Upload className="w-6 h-6 text-[#A4C37D]" />
+                  </div>
+                  <span className="text-sm font-semibold text-gray-800">
+                    {imageFile ? 'Click to change selected image' : 'Click to upload cover image'}
+                  </span>
+                  <span className="text-xs text-gray-500 mt-1">
+                    PNG, JPG, WEBP (Max 5MB)
+                  </span>
+                </label>
+
+                {imageFile && (
+                  <div className="mt-2 py-1.5 px-3 bg-green-50 border border-green-200 rounded-lg text-xs text-green-800 font-medium truncate flex items-center justify-between">
+                    <span className="truncate">Selected: {imageFile.name}</span>
+                    <span className="text-gray-400 text-[10px] ml-1">({Math.round(imageFile.size / 1024)} KB)</span>
+                  </div>
+                )}
+
+                <div className="mt-3 pt-3 border-t border-gray-200 text-left">
+                  <label htmlFor="new-image-url-input" className="block text-xs font-medium text-gray-600 mb-1">
+                    Or paste Image URL:
+                  </label>
+                  <input
+                    id="new-image-url-input"
+                    type="text"
+                    value={imageUrl}
+                    onChange={handleUrlChange}
+                    placeholder="https://example.com/image.jpg"
+                    className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A4C37D] focus:border-transparent text-gray-800 bg-white text-xs"
+                  />
+                </div>
               </div>
 
               {/* URL fallback / Image Preview */}
-              <div className="flex flex-col justify-between border rounded-lg p-4 bg-gray-50">
-                {imagePreview ? (
-                  <div className="relative w-full h-32 rounded overflow-hidden border bg-white">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={imagePreview}
-                      alt="Preview"
-                      className="w-full h-full object-cover"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setImageFile(null);
-                        setImagePreview(null);
-                        setImageUrl('');
-                      }}
-                      className="absolute top-2 right-2 px-2 py-1 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded shadow transition-colors border-none cursor-pointer"
-                    >
-                      Clear
-                    </button>
+              <div className="border border-gray-200 rounded-xl p-4 bg-gray-50 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      Image Preview
+                    </span>
+                    {(imagePreview || imageFile || imageUrl) && (
+                      <button
+                        type="button"
+                        onClick={handleClearImage}
+                        className="px-2 py-0.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 text-xs font-medium rounded transition-colors cursor-pointer"
+                      >
+                        Reset / Clear
+                      </button>
+                    )}
                   </div>
-                ) : (
-                  <div className="flex-grow flex flex-col justify-center">
-                    <label className="block text-xs font-medium text-gray-600 mb-1">Or paste Image URL:</label>
-                    <input
-                      type="text"
-                      value={imageUrl}
-                      onChange={(e) => {
-                        setImageUrl(e.target.value);
-                        setImagePreview(e.target.value || null);
-                      }}
-                      placeholder="https://example.com/image.jpg"
-                      className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white text-sm"
-                    />
+
+                  <div className="flex items-center justify-center min-h-[140px] bg-white rounded-lg border border-gray-100 overflow-hidden relative">
+                    {imagePreview ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="w-full h-40 object-cover"
+                      />
+                    ) : (
+                      <div className="text-center p-4 text-gray-400">
+                        <p className="text-xs">No image selected</p>
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
+
+                <p className="text-[11px] text-gray-500 mt-2 text-center">
+                  {imageFile ? '✓ Ready to upload file' : imagePreview ? '✓ Image URL provided' : 'Select a file or enter an image URL'}
+                </p>
               </div>
             </div>
           </div>
