@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../auth/[...nextauth]/route';
+import { authOptions } from '@/lib/auth';
 import { createBlog, deleteBlog, updateBlog, getBlogById, getBlogs } from '@/lib/db';
 import fs from 'fs';
 import path from 'path';
@@ -41,16 +41,16 @@ async function cleanupUnusedBlogImage(imagePath: string, currentBlogId?: number)
  * Prevents unintended file collisions.
  */
 function getSafeFileName(originalName: string, blogSlug: string, uploadDir: string): string {
-  const ext = path.extname(originalName) || '.jpg';
+  const ext = (path.extname(originalName) || '.jpg').toLowerCase();
   const sanitizedBase = blogSlug || 'blog-image';
+  const timestamp = Date.now();
 
-  let fileName = `${sanitizedBase}${ext}`;
+  let fileName = `${sanitizedBase}-${timestamp}${ext}`;
   let filePath = path.join(uploadDir, fileName);
 
-  // Append a numeric suffix if a file with the same name already exists
   let counter = 1;
   while (fs.existsSync(filePath)) {
-    fileName = `${sanitizedBase}-${counter}${ext}`;
+    fileName = `${sanitizedBase}-${timestamp}-${counter}${ext}`;
     filePath = path.join(uploadDir, fileName);
     counter++;
   }
@@ -125,7 +125,9 @@ export async function POST(req: NextRequest) {
 
     revalidatePath('/blog');
     revalidatePath(`/blog/${slug}`);
+    revalidatePath('/admin');
     revalidatePath('/admin/blogs');
+    revalidatePath('/');
 
     return NextResponse.json(newBlog, { status: 201 });
   } catch (error: any) {
@@ -277,7 +279,13 @@ export async function PUT(req: NextRequest) {
 
     revalidatePath('/blog');
     revalidatePath(`/blog/${slug}`);
+    if (existingBlog.slug !== slug) {
+      revalidatePath(`/blog/${existingBlog.slug}`);
+    }
+    revalidatePath('/admin');
     revalidatePath('/admin/blogs');
+    revalidatePath(`/admin/edit/${id}`);
+    revalidatePath('/');
 
     return NextResponse.json(updatedBlog);
   } catch (error: any) {
