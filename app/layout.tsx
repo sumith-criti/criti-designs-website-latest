@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next'
 import { Montserrat, Lato } from 'next/font/google'
 import Script from 'next/script'
@@ -22,14 +23,22 @@ const lato = Lato({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.critidevelopers.com'),
-  title: 'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
-  description: 'House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience. Professional home building and design services.',
-  keywords: 'house construction kannur, interior design kannur, architectural design payyannur, home builders kannur, construction company kerala, renovation services kannur, 3d elevation design',
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    'https://www.critidevelopers.com'
+  ),
+  title:
+    'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
+  description:
+    'House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience. Professional home building and design services.',
+  keywords:
+    'house construction kannur, interior design kannur, architectural design payyannur, home builders kannur, construction company kerala, renovation services kannur, 3d elevation design',
   authors: [{ name: 'Criti Developers LLP' }],
   openGraph: {
-    title: 'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
-    description: 'House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience.',
+    title:
+      'House Construction, Interiors & Architectural Design in Kannur | Criti Developers',
+    description:
+      'House Construction, Interiors & Architectural Design in Kannur. Turnkey solutions with 10+ years of experience.',
     type: 'website',
   },
   robots: {
@@ -45,35 +54,55 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body suppressHydrationWarning className={`${montserrat.variable} ${lato.variable} font-body antialiased bg-background`}>
+      <body
+        suppressHydrationWarning
+        className={`${montserrat.variable} ${lato.variable} font-body antialiased bg-background`}
+      >
+        {/* Google Tag Manager */}
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            id="google-tag-manager"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];
+                w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-T4BFZNH8');
+              `,
+            }}
+          />
+        )}
+
+        {/* Google Analytics 4 */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Script
+              src="https://www.googletagmanager.com/gtag/js?id=G-V29QZ3Y9ED"
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-V29QZ3Y9ED');
+              `}
+            </Script>
+          </>
+        )}
+
         <Providers>
           <Navbar />
-          <main className="min-h-screen">
-            {children}
-          </main>
+          <main className="min-h-screen">{children}</main>
           <Footer />
           <StickyCTAs />
-          {process.env.NODE_ENV === 'production' && (
-            <>
-              <Script
-                src="https://www.googletagmanager.com/gtag/js?id=G-V29QZ3Y9ED"
-                strategy="lazyOnload"
-              />
-              <Script id="google-analytics" strategy="lazyOnload">
-                {`
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-V29QZ3Y9ED');
-                `}
-              </Script>
-            </>
-          )}
         </Providers>
       </body>
     </html>
   )
 }
-
-
-
